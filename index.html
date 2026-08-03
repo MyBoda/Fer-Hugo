@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fernanda & Hugo - ¡Nos Casamos!</title>
-    <!-- Importando fuentes para coincidir con el estilo del ejemplo -->
+    <!-- Importando fuentes -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap');
     </style>
     <style>
         :root {
-            --primary-color: #5C4B41; /* Marrón oscuro / Café elegante */
-            --accent-color: #8C7561; /* Tono café más claro / taupe */
-            --bg-color: #F8F5F0; /* Fondo crema muy sutil */
+            --primary-color: #5C4B41; 
+            --accent-color: #8C7561; 
+            --bg-color: #F8F5F0; 
             --text-dark: #333333;
             --text-light: #666666;
             --white: #FFFFFF;
@@ -28,7 +28,6 @@
             scroll-behavior: smooth;
         }
         
-        /* Efecto de desvanecimiento al hacer scroll (opcional para un toque premium) */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -39,7 +38,24 @@
             transform: translateY(0);
         }
 
-        /* --- SECCIÓN HERO (PORTADA PRINCIPAL) --- */
+        /* --- IMÁGENES RESPONSIVAS --- */
+        .img-fluid {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin: 20px auto;
+            display: block;
+        }
+        .img-banner {
+            width: 100%;
+            height: 60vh;
+            object-fit: cover;
+            display: block;
+            margin: 0;
+        }
+
+        /* --- SECCIÓN HERO --- */
         .hero { 
             position: relative;
             min-height: 100vh; 
@@ -50,16 +66,17 @@
             text-align: center;
             padding: 40px 20px;
             box-sizing: border-box;
-            background-color: var(--white);
-            /* Aquí podrías añadir una imagen de fondo sutil o textura */
-            /* background-image: url('tu-imagen.jpg'); background-size: cover; background-position: center; */
+            /* Fondo con la imagen 047 y un overlay para que el texto resalte */
+            background: linear-gradient(rgba(248, 245, 240, 0.75), rgba(248, 245, 240, 0.95)), url('Fer&Hugo_StD_2026_047.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
         
-        /* Marco decorativo sutil alrededor de la portada */
         .hero-border {
             position: absolute;
             top: 20px; left: 20px; right: 20px; bottom: 20px;
-            border: 1px solid rgba(92, 75, 65, 0.2);
+            border: 1px solid rgba(92, 75, 65, 0.3);
             pointer-events: none;
             z-index: 1;
         }
@@ -81,13 +98,13 @@
         }
 
         h1 { 
-            font-family: 'Great Vibes', cursive; /* Fuente script muy elegante, similar al ejemplo */
+            font-family: 'Great Vibes', cursive; 
             color: var(--primary-color);
-            font-size: clamp(4rem, 12vw, 7rem); /* Adaptable: enorme en PC, grande en móvil */
+            font-size: clamp(4rem, 12vw, 7rem); 
             margin: 0; 
             line-height: 1; 
             font-weight: 400;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.05); /* Sombra muy sutil para dar volumen */
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.5); 
         }
 
         .ampersand {
@@ -104,32 +121,44 @@
             font-size: clamp(1.2rem, 4vw, 1.5rem); 
             letter-spacing: 2px; 
             margin-top: 30px; 
-            color: var(--text-dark);
+            color: var(--primary-color);
             border-top: 1px solid var(--accent-color);
             border-bottom: 1px solid var(--accent-color);
             display: inline-block;
             padding: 10px 30px;
         }
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s infinite;
-            color: var(--accent-color);
-            font-size: 24px;
-            text-decoration: none;
-            z-index: 10;
+        /* --- CITA Y PADRES --- */
+        .quote-section {
+            padding: 80px 20px 40px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .quote-text {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--primary-color);
+            margin-bottom: 40px;
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-            40% { transform: translateY(-20px) translateX(-50%); }
-            60% { transform: translateY(-10px) translateX(-50%); }
+        .parents-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .parents-block p {
+            margin: 5px 0;
+            font-size: 1rem;
+            color: var(--text-dark);
         }
 
-        /* --- SECCIÓN CONTADOR (MODIFICADA ESTILO CAFÉ/ELEGANTE) --- */
+        /* --- SECCIÓN CONTADOR --- */
         .countdown-section {
             background-color: var(--primary-color);
             color: var(--white);
@@ -149,7 +178,7 @@
         .countdown-container { 
             display: flex; 
             justify-content: center; 
-            gap: 20px; /* Mayor separación */
+            gap: 20px; 
             flex-wrap: wrap;
             width: 100%;
             max-width: 900px; 
@@ -161,32 +190,28 @@
             flex-direction: column; 
             align-items: center; 
             justify-content: center;
-            background-color: transparent; /* Sin fondo sólido */
-            border: 1px solid rgba(255,255,255,0.3); /* Borde sutil */
+            border: 1px solid rgba(255,255,255,0.3); 
             color: var(--white); 
             padding: 25px 10px; 
-            border-radius: 4px; /* Bordes ligeramente redondeados, más sobrio */
+            border-radius: 4px; 
             flex: 1; 
             min-width: 90px; 
             max-width: 140px;
             position: relative;
         }
 
-        /* Línea divisoria decorativa dentro de la caja (opcional, estilo premium) */
         .countdown-box::after {
             content: '';
             position: absolute;
-            bottom: 35%;
-            left: 20%;
-            right: 20%;
+            bottom: 35%; left: 20%; right: 20%;
             height: 1px;
             background-color: rgba(255,255,255,0.2);
         }
         
         .countdown-box span { 
             font-family: 'Playfair Display', serif; 
-            font-size: clamp(3rem, 10vw, 4.5rem); /* Números muy grandes */
-            font-weight: 400; /* No tan gruesos para mantener la elegancia */
+            font-size: clamp(3rem, 10vw, 4.5rem); 
+            font-weight: 400; 
             line-height: 1; 
             margin-bottom: 15px;
         }
@@ -199,22 +224,11 @@
             font-weight: 300;
             color: rgba(255,255,255,0.8);
         }
-        
-        /* Ajustes Móviles para Contador */
-        @media (max-width: 600px) { 
-            .countdown-container { gap: 15px; } 
-            .countdown-box { 
-                padding: 20px 5px; 
-                min-width: calc(50% - 15px); /* Grid 2x2 en móviles */
-                box-sizing: border-box;
-            } 
-            .countdown-box::after { display: none; /* Ocultar línea en móvil por espacio */ }
-        }
 
-        /* --- SECCIONES GENERALES (DETALLES, RSVP) --- */
+        /* --- SECCIONES GENERALES --- */
         .section { 
             padding: 100px 20px; 
-            max-width: 800px; 
+            max-width: 900px; 
             margin: 0 auto; 
             text-align: center;
         }
@@ -227,7 +241,7 @@
             font-family: 'Playfair Display', serif; 
             color: var(--primary-color);
             font-size: clamp(2.5rem, 6vw, 3.5rem);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             font-weight: 400;
         }
 
@@ -264,6 +278,14 @@
             font-weight: 600;
         }
 
+        .gift-box {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            margin-top: 30px;
+        }
+
         /* --- BOTONES --- */
         .btn { 
             display: inline-block; 
@@ -282,7 +304,6 @@
             z-index: 1;
         }
 
-        /* Efecto hover elegante para el botón */
         .btn::before {
             content: '';
             position: absolute;
@@ -294,21 +315,15 @@
             transition: transform 0.4s ease;
         }
         
-        .btn:hover { 
-            color: var(--white); 
-        }
-        .btn:hover::before {
-            transform: scaleY(1);
-        }
+        .btn:hover { color: var(--white); }
+        .btn:hover::before { transform: scaleY(1); }
 
-        /* Botón sólido variante */
         .btn-solid {
             background-color: var(--primary-color);
             color: var(--white);
             border: none;
         }
         .btn-solid::before { background-color: var(--accent-color); }
-        .btn-solid:hover { color: var(--white); }
 
         .footer { 
             background-color: var(--primary-color);
@@ -319,12 +334,21 @@
             letter-spacing: 1px;
         }
 
-        .footer p { margin: 5px 0; }
         .footer-names {
             font-family: 'Great Vibes', cursive;
             font-size: 2rem;
             color: var(--white);
             margin-bottom: 20px !important;
+        }
+
+        @media (max-width: 600px) { 
+            .countdown-container { gap: 15px; } 
+            .countdown-box { 
+                padding: 20px 5px; 
+                min-width: calc(50% - 15px); 
+                box-sizing: border-box;
+            } 
+            .countdown-box::after { display: none; }
         }
     </style>
 </head>
@@ -333,19 +357,42 @@
     <div class="hero" id="inicio">
         <div class="hero-border"></div>
         <div class="hero-content fade-in">
-            <p class="pre-title">Nuestra Boda</p>
+            <p class="pre-title">Tenemos el honor de invitarte a</p>
+            <p class="pre-title" style="margin-top:-10px;">Nuestra Boda</p>
             <h1>Fernanda</h1>
             <span class="ampersand">&</span>
             <h1>Hugo</h1>
             <div class="wedding-date-hero">02 . ENERO . 2027</div>
         </div>
-        <!-- Flecha indicadora de scroll -->
-        <a href="#detalles" class="scroll-indicator">
-            <!-- Icono SVG de flecha hacia abajo -->
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        </a>
     </div>
     
+    <!-- SECCIÓN CITA, PADRES Y PADRINOS -->
+    <div class="section-light">
+        <div class="quote-section fade-in">
+            <p class="quote-text">"Dios juntó nuestras manos y nos señaló el camino, nosotros uniremos nuestras vidas y la recorreremos con amor y fe"</p>
+            
+            <img src="Fer&Hugo_StD_2026_017.jpg" alt="Manos unidas" class="img-fluid fade-in" style="max-width: 600px; margin: 40px auto;">
+
+            <span class="section-subtitle">Motivados por el amor que nos tenemos y con la bendición de nuestros padres</span>
+            <div class="parents-grid">
+                <div class="parents-block">
+                    <p>Fernando Velez Cuata</p>
+                    <p>Julia Flores Serrano</p>
+                </div>
+                <div class="parents-block">
+                    <p>Eleazar Hernández Guzmán</p>
+                    <p>Elia Florentina Gómez Ramos</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 50px;">
+                <span class="section-subtitle">Padrinos de Velación</span>
+                <p class="detail-text" style="color: var(--text-dark);">Julián Guadalupe Gómez Ramos</p>
+                <p class="detail-text" style="color: var(--text-dark);">Irma López Martínez</p>
+            </div>
+        </div>
+    </div>
+
     <!-- SECCIÓN CONTADOR -->
     <div class="countdown-section fade-in">
         <h3 class="countdown-title">Faltan</h3>
@@ -363,27 +410,47 @@
         <span class="section-subtitle">Acompáñanos en nuestro gran día</span>
         
         <div class="detail-block">
-            <!-- Icono SVG representativo de anillos/ceremonia -->
+            <!-- Icono de Iglesia -->
             <span class="detail-icon">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="5"></circle><circle cx="15" cy="12" r="5"></circle></svg>
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8v10a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8"></path><path d="M12 2v6"></path><path d="M9 5h6"></path><path d="M3 11l9-9 9 9"></path></svg>
             </span>
-            <p class="detail-text"><strong>Ceremonia Religiosa y Recepción</strong></p>
-            <p class="detail-text">Sábado, 02 de Enero de 2027<br>a las 17:00 hrs.</p>
+            <p class="detail-text"><strong>Ceremonia Religiosa</strong></p>
+            <p class="detail-text">Santuario del Señor de la Misericordia</p>
+            <p class="detail-text">Hrs 3:00 PM</p>
         </div>
 
         <div class="detail-block">
-            <!-- Icono SVG de ubicación -->
+            <!-- Icono de Recepción / Copas -->
             <span class="detail-icon">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22h8"></path><path d="M12 15v7"></path><path d="M12 15a6.002 6.002 0 0 0 6-6V3H6v6a6.002 6.002 0 0 0 6 6z"></path></svg>
             </span>
-            <p class="detail-text"><strong>Cholula Hotel</strong></p>
-            <p class="detail-text">Puebla, México</p>
+            <p class="detail-text"><strong>Recepción</strong></p>
+            <p class="detail-text">Hotel Posada Señorial</p>
+            <p class="detail-text">Hrs 5:00 PM</p>
             <a href="https://share.google/oNMljRJuNwNq5EygN" target="_blank" class="btn">Ver Mapa</a>
         </div>
     </div>
 
-    <!-- SECCIÓN DE RSVP -->
+    <!-- BANNER DE TRANSICIÓN CON FOTO -->
+    <img src="Fer&Hugo_StD_2026_043.jpg" alt="Fernanda y Hugo" class="img-banner fade-in">
+
+    <!-- SECCIÓN DE REGALOS -->
     <div class="section fade-in" style="background-color: var(--bg-color);">
+        <h2 class="section-title">Mesa de Regalos</h2>
+        
+        <img src="Fer&Hugo_StD_2026_014.jpg" alt="Detalle del anillo" class="img-fluid fade-in" style="max-width: 400px;">
+        
+        <div class="gift-box">
+            <p class="detail-text" style="max-width: 600px; margin: 0 auto 30px auto;">
+                Su presencia es nuestro mayor regalo, pero si desean tener un detalle con nosotros, pueden encontrar nuestra mesa de regalos en:
+            </p>
+            <h3 style="font-family: 'Playfair Display', serif; color: var(--primary-color); font-size: 1.8rem; margin: 10px 0;">Liverpool</h3>
+            <p class="detail-text" style="font-size: 1.3rem; letter-spacing: 2px;">No. de Evento: <strong>52028584</strong></p>
+        </div>
+    </div>
+
+    <!-- SECCIÓN DE RSVP -->
+    <div class="section section-light fade-in">
         <h2 class="section-title">Asistencia</h2>
         <span class="section-subtitle">RSVP</span>
         
@@ -402,8 +469,8 @@
     <!-- JAVASCRIPT -->
     <script>
         // 1. LÓGICA DEL CONTADOR
-        // Fecha para la boda de Fernanda y Hugo: Enero 02, 2027 a las 17:00 hrs
-        const countDownDate = new Date("Jan 02, 2027 17:00:00").getTime();
+        // Fecha para la boda: Enero 02, 2027. Ajustado a las 15:00 hrs (hora de la misa).
+        const countDownDate = new Date("Jan 02, 2027 15:00:00").getTime();
 
         const x = setInterval(function() {
             const now = new Date().getTime();
@@ -431,7 +498,7 @@
             const faders = document.querySelectorAll('.fade-in');
             
             const appearOptions = {
-                threshold: 0.15, // El elemento debe estar al menos 15% visible
+                threshold: 0.15,
                 rootMargin: "0px 0px -50px 0px"
             };
 
@@ -441,7 +508,7 @@
                         return;
                     } else {
                         entry.target.classList.add('visible');
-                        observer.unobserve(entry.target); // Dejar de observar una vez animado
+                        observer.unobserve(entry.target);
                     }
                 });
             }, appearOptions);
@@ -450,7 +517,6 @@
                 appearOnScroll.observe(fader);
             });
             
-            // Forzar la animación de los elementos visibles inicialmente (hero)
             setTimeout(() => {
                 document.querySelectorAll('.hero-content.fade-in').forEach(el => el.classList.add('visible'));
             }, 100);
