@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Nos Casamos!</title>
+    <style>
+        /* Importando fuentes elegantes de Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400&display=swap');
+        
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            text-align: center; 
+            margin: 0; 
+            background-color: #FAF9F6; /* Blanco roto elegante */
+            color: #333; 
+        }
+        
+        .hero { 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            padding: 20px;
+        }
+        
+        h1, h2 { 
+            font-family: 'Playfair Display', serif; 
+            color: #4A4A4A; 
+        }
+        
+        h1 { font-size: clamp(3rem, 8vw, 5rem); margin: 10px 0; }
+        h2 { font-size: 2.5rem; }
+        
+        .date { 
+            font-size: 1.2rem; 
+            letter-spacing: 3px; 
+            margin-top: 20px; 
+            color: #666;
+        }
+        
+        .section { 
+            padding: 80px 20px; 
+            max-width: 600px; 
+            margin: 0 auto; 
+        }
+        
+        .btn { 
+            display: inline-block; 
+            padding: 15px 30px; 
+            background-color: #798C7B; /* Verde salvia elegante */
+            color: white; 
+            text-decoration: none; 
+            border-radius: 30px; 
+            font-weight: 400; 
+            letter-spacing: 1px;
+            margin-top: 20px; 
+            transition: background-color 0.3s ease; 
+        }
+        
+        .btn:hover { background-color: #5d6d5e; }
+        
+        .footer { padding: 40px; font-size: 0.9rem; color: #888; }
+    </style>
+</head>
+<body>
+    <!-- SECCIÓN PRINCIPAL -->
+    <div class="hero">
+        <p>Tenemos el honor de invitarte a nuestra boda</p>
+        <h1>María & Juan</h1>
+        <p class="date">25 . 11 . 2026</p>
+    </div>
+    
+    <!-- SECCIÓN DE DETALLES -->
+    <div class="section">
+        <h2>Cuándo y Dónde</h2>
+        <p><strong>Ceremonia y Recepción</strong></p>
+        <p>Sábado, 25 de Noviembre a las 17:00 hrs.</p>
+        <p>Hacienda Los Arcángeles<br>Puebla, México</p>
+    </div>
+
+    <!-- SECCIÓN DE RSVP -->
+    <div class="section" style="background-color: #F0EFE9; max-width: 100%;">
+        <h2>Asistencia</h2>
+        <p>Por favor, confirma tu asistencia antes del 1 de Noviembre.</p>
+        <!-- Reemplaza el enlace de abajo por tu link de Google Forms o WhatsApp -->
+        <a href="https://wa.me/tunumerodecelular" target="_blank" class="btn">Confirmar Asistencia</a>
+    </div>
+
+    <div class="footer">
+        <p>¡Esperamos verte ahí!</p>
+    </div>
+</body>
+</html>
