@@ -10,11 +10,12 @@
     </style>
     <style>
         :root {
-            --primary-color: #5C4B41; 
-            --accent-color: #8C7561; 
-            --bg-color: #F8F5F0; 
-            --text-dark: #333333;
-            --text-light: #666666;
+            /* Colores ajustados a los tonos de la invitación impresa */
+            --primary-color: #8B796D; 
+            --accent-color: #A39185; 
+            --bg-color: #FCFAF5; 
+            --text-dark: #5A524D;
+            --text-light: #7A726D;
             --white: #FFFFFF;
         }
 
@@ -38,18 +39,20 @@
             transform: translateY(0);
         }
 
-        /* --- IMÁGENES RESPONSIVAS --- */
+        /* --- IMÁGENES RESPONSIVAS AJUSTADAS --- */
         .img-fluid {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin: 20px auto;
+            width: 85%; /* Deja un margen bonito en móviles */
+            max-width: 450px; /* Límite en computadoras */
+            max-height: 55vh; /* Evita que ocupe toda la pantalla verticalmente */
+            object-fit: cover; /* Mantiene la proporción sin deformar */
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+            margin: 30px auto;
             display: block;
         }
         .img-banner {
             width: 100%;
-            height: 60vh;
+            height: 40vh; /* Altura reducida para mejor visualización en móvil */
             object-fit: cover;
             display: block;
             margin: 0;
@@ -66,8 +69,7 @@
             text-align: center;
             padding: 40px 20px;
             box-sizing: border-box;
-            /* Fondo con la imagen 047 y un overlay para que el texto resalte */
-            background: linear-gradient(rgba(248, 245, 240, 0.75), rgba(248, 245, 240, 0.95)), url('Fer&Hugo_StD_2026_047.jpg');
+            background: linear-gradient(rgba(252, 250, 245, 0.8), rgba(252, 250, 245, 0.95)), url('Fer&Hugo_StD_2026_047.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -76,7 +78,7 @@
         .hero-border {
             position: absolute;
             top: 20px; left: 20px; right: 20px; bottom: 20px;
-            border: 1px solid rgba(92, 75, 65, 0.3);
+            border: 1px solid rgba(139, 121, 109, 0.3);
             pointer-events: none;
             z-index: 1;
         }
@@ -104,7 +106,6 @@
             margin: 0; 
             line-height: 1; 
             font-weight: 400;
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.5); 
         }
 
         .ampersand {
@@ -139,7 +140,7 @@
         .quote-text {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             line-height: 1.8;
             color: var(--primary-color);
             margin-bottom: 40px;
@@ -248,9 +249,10 @@
         .section-subtitle {
             font-family: 'Montserrat', sans-serif;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.85rem;
-            color: var(--accent-color);
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            line-height: 1.6;
+            color: var(--primary-color);
             margin-bottom: 40px;
             display: block;
         }
@@ -371,7 +373,7 @@
         <div class="quote-section fade-in">
             <p class="quote-text">"Dios juntó nuestras manos y nos señaló el camino, nosotros uniremos nuestras vidas y la recorreremos con amor y fe"</p>
             
-            <img src="Fer&Hugo_StD_2026_017.jpg" alt="Manos unidas" class="img-fluid fade-in" style="max-width: 600px; margin: 40px auto;">
+            <img src="1000390073.jpg" alt="Manos unidas" class="img-fluid fade-in">
 
             <span class="section-subtitle">Motivados por el amor que nos tenemos y con la bendición de nuestros padres</span>
             <div class="parents-grid">
@@ -416,7 +418,7 @@
             </span>
             <p class="detail-text"><strong>Ceremonia Religiosa</strong></p>
             <p class="detail-text">Santuario del Señor de la Misericordia</p>
-            <p class="detail-text">Hrs 3:00 PM</p>
+            <p class="detail-text">17:00 hrs.</p>
         </div>
 
         <div class="detail-block">
@@ -426,7 +428,7 @@
             </span>
             <p class="detail-text"><strong>Recepción</strong></p>
             <p class="detail-text">Hotel Posada Señorial</p>
-            <p class="detail-text">Hrs 5:00 PM</p>
+            <p class="detail-text">19:00 hrs.</p>
             <a href="https://share.google/oNMljRJuNwNq5EygN" target="_blank" class="btn">Ver Mapa</a>
         </div>
     </div>
@@ -438,7 +440,7 @@
     <div class="section fade-in" style="background-color: var(--bg-color);">
         <h2 class="section-title">Mesa de Regalos</h2>
         
-        <img src="Fer&Hugo_StD_2026_014.jpg" alt="Detalle del anillo" class="img-fluid fade-in" style="max-width: 400px;">
+        <img src="1000390074.jpg" alt="Detalle del anillo" class="img-fluid fade-in">
         
         <div class="gift-box">
             <p class="detail-text" style="max-width: 600px; margin: 0 auto 30px auto;">
@@ -469,8 +471,8 @@
     <!-- JAVASCRIPT -->
     <script>
         // 1. LÓGICA DEL CONTADOR
-        // Fecha para la boda: Enero 02, 2027. Ajustado a las 15:00 hrs (hora de la misa).
-        const countDownDate = new Date("Jan 02, 2027 15:00:00").getTime();
+        // Fecha para la boda: Enero 02, 2027 a las 17:00 hrs (hora de la ceremonia)
+        const countDownDate = new Date("Jan 02, 2027 17:00:00").getTime();
 
         const x = setInterval(function() {
             const now = new Date().getTime();
