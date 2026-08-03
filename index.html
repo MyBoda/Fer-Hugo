@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fernanda & Hugo - ¡Nos Casamos!</title>
+    <!-- Importando fuentes para coincidir con el estilo del ejemplo -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap');
+    </style>
+    <style>
+        :root {
+            --primary-color: #5C4B41; /* Marrón oscuro / Café elegante */
+            --accent-color: #8C7561; /* Tono café más claro / taupe */
+            --bg-color: #F8F5F0; /* Fondo crema muy sutil */
+            --text-dark: #333333;
+            --text-light: #666666;
+            --white: #FFFFFF;
+        }
+
+        body, html { 
+            margin: 0; 
+            padding: 0;
+            font-family: 'Montserrat', sans-serif; 
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        /* Efecto de desvanecimiento al hacer scroll (opcional para un toque premium) */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- SECCIÓN HERO (PORTADA PRINCIPAL) --- */
+        .hero { 
+            position: relative;
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            background-color: var(--white);
+            /* Aquí podrías añadir una imagen de fondo sutil o textura */
+            /* background-image: url('tu-imagen.jpg'); background-size: cover; background-position: center; */
+        }
+        
+        /* Marco decorativo sutil alrededor de la portada */
+        .hero-border {
+            position: absolute;
+            top: 20px; left: 20px; right: 20px; bottom: 20px;
+            border: 1px solid rgba(92, 75, 65, 0.2);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            width: 100%;
+        }
+        
+        .pre-title {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        h1 { 
+            font-family: 'Great Vibes', cursive; /* Fuente script muy elegante, similar al ejemplo */
+            color: var(--primary-color);
+            font-size: clamp(4rem, 12vw, 7rem); /* Adaptable: enorme en PC, grande en móvil */
+            margin: 0; 
+            line-height: 1; 
+            font-weight: 400;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05); /* Sombra muy sutil para dar volumen */
+        }
+
+        .ampersand {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(2rem, 6vw, 3rem);
+            color: var(--accent-color);
+            display: block;
+            margin: 5px 0;
+        }
+
+        .wedding-date-hero { 
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.2rem, 4vw, 1.5rem); 
+            letter-spacing: 2px; 
+            margin-top: 30px; 
+            color: var(--text-dark);
+            border-top: 1px solid var(--accent-color);
+            border-bottom: 1px solid var(--accent-color);
+            display: inline-block;
+            padding: 10px 30px;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: var(--accent-color);
+            font-size: 24px;
+            text-decoration: none;
+            z-index: 10;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-20px) translateX(-50%); }
+            60% { transform: translateY(-10px) translateX(-50%); }
+        }
+
+        /* --- SECCIÓN CONTADOR (MODIFICADA ESTILO CAFÉ/ELEGANTE) --- */
+        .countdown-section {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .countdown-title {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--white);
+            font-weight: normal;
+        }
+
+        .countdown-container { 
+            display: flex; 
+            justify-content: center; 
+            gap: 20px; /* Mayor separación */
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 900px; 
+            margin: 0 auto;
+        }
+        
+        .countdown-box { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center;
+            background-color: transparent; /* Sin fondo sólido */
+            border: 1px solid rgba(255,255,255,0.3); /* Borde sutil */
+            color: var(--white); 
+            padding: 25px 10px; 
+            border-radius: 4px; /* Bordes ligeramente redondeados, más sobrio */
+            flex: 1; 
+            min-width: 90px; 
+            max-width: 140px;
+            position: relative;
+        }
+
+        /* Línea divisoria decorativa dentro de la caja (opcional, estilo premium) */
+        .countdown-box::after {
+            content: '';
+            position: absolute;
+            bottom: 35%;
+            left: 20%;
+            right: 20%;
+            height: 1px;
+            background-color: rgba(255,255,255,0.2);
+        }
+        
+        .countdown-box span { 
+            font-family: 'Playfair Display', serif; 
+            font-size: clamp(3rem, 10vw, 4.5rem); /* Números muy grandes */
+            font-weight: 400; /* No tan gruesos para mantener la elegancia */
+            line-height: 1; 
+            margin-bottom: 15px;
+        }
+        
+        .countdown-box .label { 
+            font-family: 'Montserrat', sans-serif; 
+            font-size: clamp(0.7rem, 2.5vw, 0.85rem); 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            font-weight: 300;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        /* Ajustes Móviles para Contador */
+        @media (max-width: 600px) { 
+            .countdown-container { gap: 15px; } 
+            .countdown-box { 
+                padding: 20px 5px; 
+                min-width: calc(50% - 15px); /* Grid 2x2 en móviles */
+                box-sizing: border-box;
+            } 
+            .countdown-box::after { display: none; /* Ocultar línea en móvil por espacio */ }
+        }
+
+        /* --- SECCIONES GENERALES (DETALLES, RSVP) --- */
+        .section { 
+            padding: 100px 20px; 
+            max-width: 800px; 
+            margin: 0 auto; 
+            text-align: center;
+        }
+
+        .section-light {
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif; 
+            color: var(--primary-color);
+            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .section-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        .detail-block {
+            margin-bottom: 50px;
+        }
+
+        .detail-icon {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .detail-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-light);
+            margin: 5px 0;
+        }
+
+        .detail-text strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* --- BOTONES --- */
+        .btn { 
+            display: inline-block; 
+            padding: 18px 40px; 
+            background-color: transparent;
+            color: var(--primary-color); 
+            border: 1px solid var(--primary-color);
+            text-decoration: none; 
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-top: 20px; 
+            transition: all 0.4s ease; 
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        /* Efecto hover elegante para el botón */
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: var(--primary-color);
+            z-index: -1;
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.4s ease;
+        }
+        
+        .btn:hover { 
+            color: var(--white); 
+        }
+        .btn:hover::before {
+            transform: scaleY(1);
+        }
+
+        /* Botón sólido variante */
+        .btn-solid {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+        }
+        .btn-solid::before { background-color: var(--accent-color); }
+        .btn-solid:hover { color: var(--white); }
+
+        .footer { 
+            background-color: var(--primary-color);
+            color: rgba(255,255,255,0.5);
+            padding: 60px 20px; 
+            text-align: center;
+            font-size: 0.85rem; 
+            letter-spacing: 1px;
+        }
+
+        .footer p { margin: 5px 0; }
+        .footer-names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            color: var(--white);
+            margin-bottom: 20px !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- SECCIÓN PRINCIPAL (HERO) -->
+    <div class="hero" id="inicio">
+        <div class="hero-border"></div>
+        <div class="hero-content fade-in">
+            <p class="pre-title">Nuestra Boda</p>
+            <h1>Fernanda</h1>
+            <span class="ampersand">&</span>
+            <h1>Hugo</h1>
+            <div class="wedding-date-hero">02 . ENERO . 2027</div>
+        </div>
+        <!-- Flecha indicadora de scroll -->
+        <a href="#detalles" class="scroll-indicator">
+            <!-- Icono SVG de flecha hacia abajo -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </a>
+    </div>
+    
+    <!-- SECCIÓN CONTADOR -->
+    <div class="countdown-section fade-in">
+        <h3 class="countdown-title">Faltan</h3>
+        <div class="countdown-container">
+            <div class="countdown-box"><span id="days">00</span><span class="label">Días</span></div>
+            <div class="countdown-box"><span id="hours">00</span><span class="label">Horas</span></div>
+            <div class="countdown-box"><span id="minutes">00</span><span class="label">Minutos</span></div>
+            <div class="countdown-box"><span id="seconds">00</span><span class="label">Segundos</span></div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN DE DETALLES -->
+    <div class="section section-light fade-in" id="detalles">
+        <h2 class="section-title">Cuándo & Dónde</h2>
+        <span class="section-subtitle">Acompáñanos en nuestro gran día</span>
+        
+        <div class="detail-block">
+            <!-- Icono SVG representativo de anillos/ceremonia -->
+            <span class="detail-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="5"></circle><circle cx="15" cy="12" r="5"></circle></svg>
+            </span>
+            <p class="detail-text"><strong>Ceremonia Religiosa y Recepción</strong></p>
+            <p class="detail-text">Sábado, 02 de Enero de 2027<br>a las 17:00 hrs.</p>
+        </div>
+
+        <div class="detail-block">
+            <!-- Icono SVG de ubicación -->
+            <span class="detail-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </span>
+            <p class="detail-text"><strong>Cholula Hotel</strong></p>
+            <p class="detail-text">Puebla, México</p>
+            <a href="https://maps.google.com/?q=Cholula+Hotel+Puebla" target="_blank" class="btn">Ver Mapa</a>
+        </div>
+    </div>
+
+    <!-- SECCIÓN DE RSVP -->
+    <div class="section fade-in" style="background-color: var(--bg-color);">
+        <h2 class="section-title">Asistencia</h2>
+        <span class="section-subtitle">RSVP</span>
+        
+        <p class="detail-text" style="max-width: 500px; margin: 0 auto 30px auto;">Nos haría muy felices compartir este momento contigo. Por favor, confirma tu asistencia antes del 1 de Noviembre.</p>
+        
+        <a href="https://wa.me/tunumerodecelular" target="_blank" class="btn btn-solid">Confirmar Asistencia</a>
+    </div>
+
+    <!-- PIE DE PÁGINA -->
+    <div class="footer">
+        <p class="footer-names">Fernanda & Hugo</p>
+        <p>¡Esperamos verte ahí!</p>
+        <p style="margin-top: 20px; font-size: 0.7rem; opacity: 0.5;">02.01.2027 | PUEBLA</p>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // 1. LÓGICA DEL CONTADOR
+        // Fecha para la boda de Fernanda y Hugo: Enero 02, 2027 a las 17:00 hrs
+        const countDownDate = new Date("Jan 02, 2027 17:00:00").getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.querySelector(".countdown-container").innerHTML = "<p style='font-family: Playfair Display; font-size: 2rem; color: #fff; font-weight: normal; font-style: italic;'>¡El gran día ha llegado!</p>";
+                document.querySelector(".countdown-title").style.display = "none";
+            }
+        }, 1000);
+
+        // 2. LÓGICA DE ANIMACIÓN AL HACER SCROLL (Fade-in)
+        document.addEventListener("DOMContentLoaded", function() {
+            const faders = document.querySelectorAll('.fade-in');
+            
+            const appearOptions = {
+                threshold: 0.15, // El elemento debe estar al menos 15% visible
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Dejar de observar una vez animado
+                    }
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+            
+            // Forzar la animación de los elementos visibles inicialmente (hero)
+            setTimeout(() => {
+                document.querySelectorAll('.hero-content.fade-in').forEach(el => el.classList.add('visible'));
+            }, 100);
+        });
+    </script>
+</body>
+</html>
