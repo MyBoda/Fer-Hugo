@@ -6,7 +6,7 @@
     <title>¡Nos Casamos!</title>
     <style>
         /* Importando fuentes elegantes de Google Fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap');
         
         body { 
             font-family: 'Montserrat', sans-serif; 
@@ -16,12 +16,15 @@
             color: #333; 
         }
         
+        /* Contenedor principal responsive */
         .hero { 
-            height: 100vh; 
+            min-height: 100vh; 
             display: flex; 
             flex-direction: column; 
             justify-content: center; 
-            padding: 20px;
+            align-items: center;
+            padding: 40px 20px;
+            box-sizing: border-box;
         }
         
         h1, h2 { 
@@ -29,16 +32,75 @@
             color: #4A4A4A; 
         }
         
-        h1 { font-size: clamp(3rem, 8vw, 5rem); margin: 10px 0; }
-        h2 { font-size: 2.5rem; }
+        /* Usamos clamp para que el texto sea fluido en móviles y pantallas grandes */
+        h1 { font-size: clamp(3rem, 10vw, 5rem); margin: 10px 0; line-height: 1.1; }
+        h2 { font-size: clamp(2rem, 6vw, 2.5rem); }
         
         .date { 
-            font-size: 1.2rem; 
+            font-size: clamp(1.1rem, 4vw, 1.3rem); 
             letter-spacing: 3px; 
-            margin-top: 20px; 
+            margin-top: 15px; 
             color: #666;
+            font-weight: 600;
+        }
+
+        /* --- CONTADOR GRANDE Y LLAMATIVO --- */
+        .countdown-container { 
+            display: flex; 
+            justify-content: center; 
+            gap: 15px; 
+            margin-top: 40px; 
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 800px; /* Para que no se estire demasiado en PC */
         }
         
+        .countdown-box { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center;
+            background-color: #798C7B; /* Fondo verde salvia sólido para resaltar */
+            color: white; /* Texto blanco en contraste */
+            padding: 20px 15px; 
+            border-radius: 15px; 
+            box-shadow: 0 15px 25px rgba(121, 140, 123, 0.4); /* Sombra profunda */
+            flex: 1; /* Permite que las cajas se adapten */
+            min-width: 80px; 
+            max-width: 130px;
+        }
+        
+        .countdown-box span { 
+            font-family: 'Playfair Display', serif; 
+            font-size: clamp(2.5rem, 8vw, 4rem); /* Números MUY grandes fluidos */
+            font-weight: 700;
+            line-height: 1; 
+            margin-bottom: 5px;
+        }
+        
+        .countdown-box .label { 
+            font-family: 'Montserrat', sans-serif; 
+            font-size: clamp(0.7rem, 2.5vw, 0.9rem); 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            font-weight: 600;
+            opacity: 0.9;
+        }
+        
+        /* --- AJUSTES PARA TELÉFONOS MÓVILES --- */
+        @media (max-width: 600px) { 
+            .countdown-container { 
+                gap: 12px; 
+                margin-top: 30px;
+            } 
+            .countdown-box { 
+                padding: 15px 10px; 
+                /* Divide el contador en 2 columnas (2x2) para móviles */
+                min-width: calc(50% - 15px); 
+                box-sizing: border-box;
+            } 
+        }
+
         .section { 
             padding: 80px 20px; 
             max-width: 600px; 
@@ -48,17 +110,20 @@
         .btn { 
             display: inline-block; 
             padding: 15px 30px; 
-            background-color: #798C7B; /* Verde salvia elegante */
+            background-color: #4A4A4A; /* Botón oscuro para contrastar con el contador */
             color: white; 
             text-decoration: none; 
             border-radius: 30px; 
-            font-weight: 400; 
+            font-weight: 600; 
             letter-spacing: 1px;
             margin-top: 20px; 
-            transition: background-color 0.3s ease; 
+            transition: transform 0.3s ease, background-color 0.3s ease; 
         }
         
-        .btn:hover { background-color: #5d6d5e; }
+        .btn:hover { 
+            background-color: #333; 
+            transform: translateY(-3px); /* Pequeña animación al pasar el mouse */
+        }
         
         .footer { padding: 40px; font-size: 0.9rem; color: #888; }
     </style>
@@ -69,8 +134,8 @@
         <p>Tenemos el honor de invitarte a nuestra boda</p>
         <h1>Fernanda & Hugo</h1>
         <p class="date">02 . 01 . 2027</p>
-    </div>
-     <!-- --- HTML DEL CONTADOR --- -->
+        
+        <!-- --- HTML DEL CONTADOR --- -->
         <div class="countdown-container">
             <div class="countdown-box"><span id="days">00</span><span class="label">Días</span></div>
             <div class="countdown-box"><span id="hours">00</span><span class="label">Horas</span></div>
@@ -78,6 +143,7 @@
             <div class="countdown-box"><span id="seconds">00</span><span class="label">Segundos</span></div>
         </div>
     </div>
+    
     <!-- SECCIÓN DE DETALLES -->
     <div class="section">
         <h2>Cuándo y Dónde</h2>
@@ -90,12 +156,37 @@
     <div class="section" style="background-color: #F0EFE9; max-width: 100%;">
         <h2>Asistencia</h2>
         <p>Por favor, confirma tu asistencia antes del 1 de Noviembre.</p>
-        <!-- Reemplaza el enlace de abajo por tu link de Google Forms o WhatsApp -->
         <a href="https://wa.me/tunumerodecelular" target="_blank" class="btn">Confirmar Asistencia</a>
     </div>
 
     <div class="footer">
         <p>¡Esperamos verte ahí!</p>
     </div>
+
+    <!-- --- JAVASCRIPT DEL CONTADOR --- -->
+    <script>
+        // Fecha para la boda de Fernanda y Hugo: Enero 02, 2027
+        const countDownDate = new Date("Jan 02, 2027 17:00:00").getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.querySelector(".countdown-container").innerHTML = "<p style='font-family: Playfair Display; font-size: 2rem; color: #798C7B; font-weight: bold;'>¡El gran día ha llegado!</p>";
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
