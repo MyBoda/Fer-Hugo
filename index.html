@@ -129,7 +129,7 @@
             padding: 10px 30px;
         }
 
-        /* --- ESTILOS DEL REPRODUCTOR (AHORA COLOR VERDE OLIVO) --- */
+        /* --- ESTILOS DEL REPRODUCTOR --- */
         .contenedor-reproductor {
           display: flex;
           justify-content: center;
@@ -137,7 +137,7 @@
         }
 
         .reproductor-audio {
-          background-color: var(--primary-color); /* Usa el color verde principal */
+          background-color: var(--primary-color); 
           padding: 10px 25px;
           border-radius: 35px; 
           display: flex;
@@ -156,7 +156,7 @@
           background-color: var(--white);
           width: 2px;
           border-radius: 2px;
-          transition: transform 0.1s ease; /* Transición suave */
+          transition: transform 0.1s ease; 
         }
 
         .h-1 { height: 8px; }
@@ -165,20 +165,17 @@
         .h-4 { height: 24px; }
         .h-5 { height: 30px; }
 
-        /* Animación para que parezca que se mueven al ritmo */
         @keyframes animacion-ondas {
             0% { transform: scaleY(0.6); }
             50% { transform: scaleY(1.3); }
             100% { transform: scaleY(0.6); }
         }
 
-        /* Estas clases se activan solo cuando la música suena mediante JavaScript */
         .reproductor-audio.reproduciendo .barra {
             animation: animacion-ondas 1s infinite ease-in-out;
             transform-origin: center;
         }
         
-        /* Retardos diferentes para que las barras suban y bajen en tiempos distintos */
         .reproductor-audio.reproduciendo .ondas .barra:nth-child(odd) {
             animation-duration: 0.8s;
             animation-delay: 0.1s;
@@ -215,15 +212,15 @@
           height: 0;
           border-top: 10px solid transparent;
           border-bottom: 10px solid transparent;
-          border-left: 15px solid var(--primary-color); /* Color verde principal */
+          border-left: 15px solid var(--primary-color); 
           margin-left: 5px; 
         }
 
         .icono-pausa {
           width: 14px;
           height: 18px;
-          border-left: 5px solid var(--primary-color); /* Color verde principal */
-          border-right: 5px solid var(--primary-color); /* Color verde principal */
+          border-left: 5px solid var(--primary-color); 
+          border-right: 5px solid var(--primary-color); 
           box-sizing: border-box;
         }
 
@@ -360,7 +357,6 @@
         }
 
         .detail-icon {
-            font-size: 2rem;
             color: var(--accent-color);
             margin-bottom: 15px;
             display: block;
@@ -467,25 +463,18 @@
             <!-- REPRODUCTOR DE MÚSICA -->
             <div class="contenedor-reproductor">
               <div class="reproductor-audio" id="contenedor-reproductor-audio">
-                
-                <!-- Ondas izquierdas simuladas -->
                 <div class="ondas">
                     <span class="barra h-1"></span><span class="barra h-3"></span><span class="barra h-5"></span><span class="barra h-2"></span><span class="barra h-4"></span><span class="barra h-2"></span><span class="barra h-5"></span><span class="barra h-3"></span><span class="barra h-1"></span>
                 </div>
                 
-                <!-- Botón de Play/Pausa -->
                 <button id="btn-play-pause" class="btn-reproductor">
                   <div id="icono-reproductor" class="icono-play"></div>
                 </button>
 
-                <!-- Ondas derechas simuladas -->
                 <div class="ondas">
                     <span class="barra h-1"></span><span class="barra h-3"></span><span class="barra h-5"></span><span class="barra h-2"></span><span class="barra h-4"></span><span class="barra h-2"></span><span class="barra h-5"></span><span class="barra h-3"></span><span class="barra h-1"></span>
                 </div>
-
               </div>
-              
-              <!-- Archivo de audio -->
               <audio id="musica-fondo" loop>
                 <source src="musica.mp3" type="audio/mp3">
                 Tu navegador no soporta el elemento de audio.
@@ -537,10 +526,23 @@
         <h2 class="section-title">Cuándo & Dónde</h2>
         <span class="section-subtitle">Acompáñanos en nuestro gran día</span>
         
-        <!-- IGLESIA -->
+        <!-- IGLESIA (NUEVO SVG) -->
         <div class="detail-block">
             <span class="detail-icon">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8v10a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8"></path><path d="M12 2v6"></path><path d="M9 5h6"></path><path d="M3 11l9-9 9 9"></path></svg>
+                <svg width="55" height="55" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Cruz -->
+                    <path d="M12 2v5" />
+                    <path d="M10 4h4" />
+                    <!-- Torre Central -->
+                    <path d="M8 12L12 7l4 5v10H8V12z" />
+                    <!-- Techos y paredes laterales -->
+                    <path d="M8 11L4 14v8h4" />
+                    <path d="M16 11l4 3v8h-4" />
+                    <!-- Puerta -->
+                    <path d="M10 22v-3a2 2 0 0 1 4 0v3" />
+                    <!-- Ventana circular -->
+                    <circle cx="12" cy="13" r="1.5" />
+                </svg>
             </span>
             <p class="detail-text"><strong>Ceremonia Religiosa</strong></p>
             <p class="detail-text">Santuario del Señor de la Misericordia</p>
@@ -548,10 +550,31 @@
             <a href="LINK_DE_GOOGLE_MAPS" target="_blank" class="btn">Ver Mapa</a>
         </div>
 
-        <!-- RECEPCIÓN -->
+        <!-- RECEPCIÓN (NUEVO SVG) -->
         <div class="detail-block">
             <span class="detail-icon">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22h8"></path><path d="M12 15v7"></path><path d="M12 15a6.002 6.002 0 0 0 6-6V3H6v6a6.002 6.002 0 0 0 6 6z"></path></svg>
+                <svg width="55" height="55" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                    <!-- Burbujas / Salpicadura -->
+                    <path d="M12 2v2" />
+                    <path d="M10 4l-1 1" />
+                    <path d="M14 4l1 1" />
+                    
+                    <!-- Copa Izquierda -->
+                    <g transform="translate(1, 2) rotate(15, 9, 12)">
+                        <path d="M6 4h6l-1 7c0 1.5-1 3-2 3s-2-1.5-2-3L6 4z" />
+                        <path d="M9 14v7" />
+                        <path d="M7 21h4" />
+                        <path d="M6.3 7h5.4" />
+                    </g>
+                    
+                    <!-- Copa Derecha -->
+                    <g transform="translate(-1, 2) rotate(-15, 15, 12)">
+                        <path d="M12 4h6l-1 7c0 1.5-1 3-2 3s-2-1.5-2-3L12 4z" />
+                        <path d="M15 14v7" />
+                        <path d="M13 21h4" />
+                        <path d="M12.3 7h5.4" />
+                    </g>
+                </svg>
             </span>
             <p class="detail-text"><strong>Recepción</strong></p>
             <p class="detail-text">Hotel Posada Señorial</p>
@@ -633,12 +656,10 @@
             if (audio.paused) {
               audio.play();
               icono.className = 'icono-pausa';
-              // Agrega la clase que activa la animación en CSS
               contenedorReproductor.classList.add('reproduciendo'); 
             } else {
               audio.pause();
               icono.className = 'icono-play';
-              // Quita la clase y detiene la animación en CSS
               contenedorReproductor.classList.remove('reproduciendo'); 
             }
           });
