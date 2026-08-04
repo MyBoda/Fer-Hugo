@@ -129,6 +129,76 @@
             padding: 10px 30px;
         }
 
+        /* --- ESTILOS DEL REPRODUCTOR --- */
+        .contenedor-reproductor {
+          display: flex;
+          justify-content: center;
+          margin: 30px 0;
+        }
+
+        .reproductor-audio {
+          background-color: #93764b; 
+          padding: 10px 25px;
+          border-radius: 35px; 
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); 
+        }
+
+        .ondas {
+          display: flex;
+          align-items: center;
+          gap: 3px;
+        }
+
+        .barra {
+          background-color: #ffffff;
+          width: 2px;
+          border-radius: 2px;
+        }
+
+        .h-1 { height: 8px; }
+        .h-2 { height: 12px; }
+        .h-3 { height: 18px; }
+        .h-4 { height: 24px; }
+        .h-5 { height: 30px; }
+
+        .btn-reproductor {
+          background-color: #ffffff;
+          border: none;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          transition: transform 0.2s ease;
+        }
+
+        .btn-reproductor:hover {
+          transform: scale(1.05);
+        }
+
+        .icono-play {
+          width: 0;
+          height: 0;
+          border-top: 10px solid transparent;
+          border-bottom: 10px solid transparent;
+          border-left: 15px solid #93764b;
+          margin-left: 5px; 
+        }
+
+        .icono-pausa {
+          width: 14px;
+          height: 18px;
+          border-left: 5px solid #93764b;
+          border-right: 5px solid #93764b;
+          box-sizing: border-box;
+        }
+
         /* --- CITA Y PADRES --- */
         .quote-section {
             padding: 80px 20px 40px;
@@ -365,54 +435,42 @@
             <span class="ampersand">&</span>
             <h1>Hugo</h1>
             <div class="wedding-date-hero">02 . ENERO . 2027</div>
+
+            <!-- REPRODUCTOR DE MÚSICA (Debajo de la fecha) -->
+            <div class="contenedor-reproductor">
+              <div class="reproductor-audio">
+                
+                <!-- Ondas izquierdas simuladas -->
+                <div class="ondas">
+                    <span class="barra h-1"></span><span class="barra h-3"></span><span class="barra h-5"></span><span class="barra h-2"></span><span class="barra h-4"></span><span class="barra h-2"></span><span class="barra h-5"></span><span class="barra h-3"></span><span class="barra h-1"></span>
+                </div>
+                
+                <!-- Botón de Play/Pausa -->
+                <button id="btn-play-pause" class="btn-reproductor">
+                  <div id="icono-reproductor" class="icono-play"></div>
+                </button>
+
+                <!-- Ondas derechas simuladas -->
+                <div class="ondas">
+                    <span class="barra h-1"></span><span class="barra h-3"></span><span class="barra h-5"></span><span class="barra h-2"></span><span class="barra h-4"></span><span class="barra h-2"></span><span class="barra h-5"></span><span class="barra h-3"></span><span class="barra h-1"></span>
+                </div>
+
+              </div>
+              
+              <!-- Archivo de audio -->
+              <audio id="musica-fondo" loop>
+                <source src="musica.mp3" type="audio/mp3">
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+            </div>
         </div>
     </div>
-    <!-- REPRODUCTOR DE MÚSICA -->
-<div class="contenedor-reproductor">
-  <div class="reproductor-audio">
     
-    <!-- Ondas izquierdas simuladas -->
-    <div class="ondas">
-        <span class="barra h-1"></span><span class="barra h-3"></span><span class="barra h-5"></span><span class="barra h-2"></span><span class="barra h-4"></span><span class="barra h-2"></span><span class="barra h-5"></span><span class="barra h-3"></span><span class="barra h-1"></span>
-    </div>
-    
-    <!-- Botón de Play/Pausa -->
-    <button id="btn-play-pause" class="btn-reproductor">
-      <div id="icono-reproductor" class="icono-play"></div>
-    </button>
-
-    <!-- Ondas derechas simuladas -->
-    <div class="ondas">
-        <span class="barra h-1"></span><span class="barra h-3"></span><span class="barra h-5"></span><span class="barra h-2"></span><span class="barra h-4"></span><span class="barra h-2"></span><span class="barra h-5"></span><span class="barra h-3"></span><span class="barra h-1"></span>
-    </div>
-
-  </div>
-  
-  <!-- Archivo de audio -->
-  <audio id="musica-fondo" loop>
-    <source src="musica.mp3" type="audio/mp3">
-    Tu navegador no soporta el elemento de audio.
-  </audio>
-</div>
-
-<!-- NUEVOS BOTONES -->
-<div class="contenedor-botones">
-  <!-- Reemplaza "LINK_DE_GOOGLE_MAPS" con el enlace real de la iglesia -->
-  <!-- Reemplaza "CLASE_DE_TU_BOTON_HOTEL" con la clase CSS que ya usaste antes -->
-  <a href="LINK_DE_GOOGLE_MAPS" target="_blank" class="CLASE_DE_TU_BOTON_HOTEL">
-    Ubicación de la iglesia
-  </a>
-  
-  <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/52028584" target="_blank" class="CLASE_DE_TU_BOTON_HOTEL">
-    Mesa de Regalos
-  </a>
-</div>
     <!-- SECCIÓN CITA, PADRES Y PADRINOS -->
     <div class="section-light">
         <div class="quote-section fade-in">
             <p class="quote-text">"Dios juntó nuestras manos y nos señaló el camino, nosotros uniremos nuestras vidas y la recorreremos con amor y fe"</p>
             
-            <!-- Nombre original de tu imagen restaurado -->
             <img src="Fer&Hugo_StD_2026_017.jpg" alt="Manos unidas" class="img-fluid fade-in">
 
             <span class="section-subtitle">Motivados por el amor que nos tenemos y con la bendición de nuestros padres</span>
@@ -451,18 +509,19 @@
         <h2 class="section-title">Cuándo & Dónde</h2>
         <span class="section-subtitle">Acompáñanos en nuestro gran día</span>
         
+        <!-- IGLESIA -->
         <div class="detail-block">
-            <!-- Icono de Iglesia -->
             <span class="detail-icon">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8v10a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8"></path><path d="M12 2v6"></path><path d="M9 5h6"></path><path d="M3 11l9-9 9 9"></path></svg>
             </span>
             <p class="detail-text"><strong>Ceremonia Religiosa</strong></p>
             <p class="detail-text">Santuario del Señor de la Misericordia</p>
             <p class="detail-text">15:00 hrs.</p>
+            <a href="https://maps.app.goo.gl/PsMhKKYojdapoBANA" target="_blank" class="btn">Ver Mapa</a>
         </div>
 
+        <!-- RECEPCIÓN -->
         <div class="detail-block">
-            <!-- Icono de Recepción / Copas -->
             <span class="detail-icon">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22h8"></path><path d="M12 15v7"></path><path d="M12 15a6.002 6.002 0 0 0 6-6V3H6v6a6.002 6.002 0 0 0 6 6z"></path></svg>
             </span>
@@ -480,7 +539,6 @@
     <div class="section fade-in" style="background-color: var(--bg-color);">
         <h2 class="section-title">Mesa de Regalos</h2>
         
-        <!-- Nombre original de tu imagen restaurado -->
         <img src="Fer&Hugo_StD_2026_014.jpg" alt="Detalle del anillo" class="img-fluid fade-in">
         
         <div class="gift-box">
@@ -489,6 +547,7 @@
             </p>
             <h3 style="font-family: 'Playfair Display', serif; color: var(--primary-color); font-size: 1.8rem; margin: 10px 0;">Liverpool</h3>
             <p class="detail-text" style="font-size: 1.3rem; letter-spacing: 2px;">No. de Evento: <strong>52028584</strong></p>
+            <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/52028584" target="_blank" class="btn">Ver Mesa de Regalos</a>
         </div>
     </div>
 
@@ -512,7 +571,6 @@
     <!-- JAVASCRIPT -->
     <script>
         // 1. LÓGICA DEL CONTADOR
-        // Se detiene a las 15:00 hrs (hora de la ceremonia)
         const countDownDate = new Date("Jan 02, 2027 15:00:00").getTime();
 
         const x = setInterval(function() {
@@ -536,7 +594,24 @@
             }
         }, 1000);
 
-        // 2. LÓGICA DE ANIMACIÓN AL HACER SCROLL (Fade-in)
+        // 2. LÓGICA DEL REPRODUCTOR DE MÚSICA
+        document.addEventListener('DOMContentLoaded', () => {
+          const audio = document.getElementById('musica-fondo');
+          const btnPlayPause = document.getElementById('btn-play-pause');
+          const icono = document.getElementById('icono-reproductor');
+
+          btnPlayPause.addEventListener('click', () => {
+            if (audio.paused) {
+              audio.play();
+              icono.className = 'icono-pausa'; 
+            } else {
+              audio.pause();
+              icono.className = 'icono-play'; 
+            }
+          });
+        });
+
+        // 3. LÓGICA DE ANIMACIÓN AL HACER SCROLL (Fade-in)
         document.addEventListener("DOMContentLoaded", function() {
             const faders = document.querySelectorAll('.fade-in');
             
