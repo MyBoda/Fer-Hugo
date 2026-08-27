@@ -69,7 +69,7 @@
             text-align: center;
             padding: 40px 20px;
             box-sizing: border-box;
-            background: linear-gradient(rgba(247, 249, 244, 0.8), rgba(247, 249, 244, 0.95)), url('Fer&Hugo_StD_2026_047.jpg');
+            background: linear-gradient(rgba(247, 249, 244, 0.8), rgba(247, 249, 244, 0.95)), url('Images/Fer&Hugo_StD_2026_047.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -475,8 +475,8 @@
                     <span class="barra h-1"></span><span class="barra h-3"></span><span class="barra h-5"></span><span class="barra h-2"></span><span class="barra h-4"></span><span class="barra h-2"></span><span class="barra h-5"></span><span class="barra h-3"></span><span class="barra h-1"></span>
                 </div>
               </div>
-              <audio id="musica-fondo" loop>
-                <source src="musica.mp3" type="audio/mp3">
+              <audio id="musica-fondo" loop autoplay>
+                <source src="Music/musica.mp3" type="audio/mp3">
                 Tu navegador no soporta el elemento de audio.
               </audio>
             </div>
@@ -488,7 +488,7 @@
         <div class="quote-section fade-in">
             <p class="quote-text">"Dios juntó nuestras manos y nos señaló el camino, nosotros uniremos nuestras vidas y la recorreremos con amor y fe"</p>
             
-            <img src="Fer&Hugo_StD_2026_017.jpg" alt="Manos unidas" class="img-fluid fade-in">
+            <img src="Images/Fer&Hugo_StD_2026_017.jpg" alt="Manos unidas" class="img-fluid fade-in">
 
             <span class="section-subtitle">Motivados por el amor que nos tenemos y con la bendición de nuestros padres</span>
             <div class="parents-grid">
@@ -526,21 +526,16 @@
         <h2 class="section-title">Cuándo & Dónde</h2>
         <span class="section-subtitle">Acompáñanos en nuestro gran día</span>
         
-        <!-- IGLESIA (NUEVO SVG) -->
+        <!-- IGLESIA -->
         <div class="detail-block">
             <span class="detail-icon">
                 <svg width="55" height="55" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                    <!-- Cruz -->
                     <path d="M12 2v5" />
                     <path d="M10 4h4" />
-                    <!-- Torre Central -->
                     <path d="M8 12L12 7l4 5v10H8V12z" />
-                    <!-- Techos y paredes laterales -->
                     <path d="M8 11L4 14v8h4" />
                     <path d="M16 11l4 3v8h-4" />
-                    <!-- Puerta -->
                     <path d="M10 22v-3a2 2 0 0 1 4 0v3" />
-                    <!-- Ventana circular -->
                     <circle cx="12" cy="13" r="1.5" />
                 </svg>
             </span>
@@ -550,24 +545,19 @@
             <a href="LINK_DE_GOOGLE_MAPS" target="_blank" class="btn">Ver Mapa</a>
         </div>
 
-        <!-- RECEPCIÓN (NUEVO SVG) -->
+        <!-- RECEPCIÓN -->
         <div class="detail-block">
             <span class="detail-icon">
                 <svg width="55" height="55" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                    <!-- Burbujas / Salpicadura -->
                     <path d="M12 2v2" />
                     <path d="M10 4l-1 1" />
                     <path d="M14 4l1 1" />
-                    
-                    <!-- Copa Izquierda -->
                     <g transform="translate(1, 2) rotate(15, 9, 12)">
                         <path d="M6 4h6l-1 7c0 1.5-1 3-2 3s-2-1.5-2-3L6 4z" />
                         <path d="M9 14v7" />
                         <path d="M7 21h4" />
                         <path d="M6.3 7h5.4" />
                     </g>
-                    
-                    <!-- Copa Derecha -->
                     <g transform="translate(-1, 2) rotate(-15, 15, 12)">
                         <path d="M12 4h6l-1 7c0 1.5-1 3-2 3s-2-1.5-2-3L12 4z" />
                         <path d="M15 14v7" />
@@ -584,13 +574,13 @@
     </div>
 
     <!-- BANNER DE TRANSICIÓN CON FOTO -->
-    <img src="Fer&Hugo_StD_2026_043.jpg" alt="Fernanda y Hugo" class="img-banner fade-in">
+    <img src="Images/Fer&Hugo_StD_2026_043.jpg" alt="Fernanda y Hugo" class="img-banner fade-in">
 
     <!-- SECCIÓN DE REGALOS -->
     <div class="section fade-in" style="background-color: var(--bg-color);">
         <h2 class="section-title">Mesa de Regalos</h2>
         
-        <img src="Fer&Hugo_StD_2026_014.jpg" alt="Detalle del anillo" class="img-fluid fade-in">
+        <img src="Images/Fer&Hugo_StD_2026_014.jpg" alt="Detalle del anillo" class="img-fluid fade-in">
         
         <div class="gift-box">
             <p class="detail-text" style="max-width: 600px; margin: 0 auto 30px auto;">
@@ -645,14 +635,34 @@
             }
         }, 1000);
 
-        // 2. LÓGICA DEL REPRODUCTOR DE MÚSICA CON ANIMACIÓN
+        // 2. LÓGICA DEL REPRODUCTOR DE MÚSICA (AUTOPLAY Y ANIMACIÓN)
         document.addEventListener('DOMContentLoaded', () => {
           const audio = document.getElementById('musica-fondo');
           const btnPlayPause = document.getElementById('btn-play-pause');
           const icono = document.getElementById('icono-reproductor');
           const contenedorReproductor = document.getElementById('contenedor-reproductor-audio');
 
-          btnPlayPause.addEventListener('click', () => {
+          // Intentar iniciar la música automáticamente al cargar
+          audio.play().then(() => {
+              icono.className = 'icono-pausa';
+              contenedorReproductor.classList.add('reproduciendo');
+          }).catch(error => {
+              console.log("El navegador requiere interacción para reproducir audio:", error);
+              // Si el navegador bloquea el autoplay, se reproduce al primer toque/clic en la página
+              const activarAudioPorInteraccion = () => {
+                  audio.play();
+                  icono.className = 'icono-pausa';
+                  contenedorReproductor.classList.add('reproduciendo');
+                  window.removeEventListener('click', activarAudioPorInteraccion);
+                  window.removeEventListener('touchstart', activarAudioPorInteraccion);
+              };
+              window.addEventListener('click', activarAudioPorInteraccion);
+              window.addEventListener('touchstart', activarAudioPorInteraccion);
+          });
+
+          // Control manual con el botón
+          btnPlayPause.addEventListener('click', (e) => {
+            e.stopPropagation(); // Evita conflictos con el evento global de clic
             if (audio.paused) {
               audio.play();
               icono.className = 'icono-pausa';
