@@ -10,10 +10,10 @@
     </style>
     <style>
         :root {
-            /* Paleta Verde Olivo */
+            /* Paleta Verde Olivo y Crema Texturizado de Boda */
             --primary-color: #4A5E36; 
             --accent-color: #798D65; 
-            --bg-color: #F7F9F4; 
+            --bg-color: #FAF8F5; /* Crema marfil elegante */
             --text-dark: #3A452B;
             --text-light: #6A755D;
             --white: #FFFFFF;
@@ -24,6 +24,11 @@
             padding: 0;
             font-family: 'Montserrat', sans-serif; 
             background-color: var(--bg-color);
+            /* Textura fina estilo papel de invitación de boda */
+            background-image: 
+                linear-gradient(90deg, rgba(74, 94, 54, 0.025) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(74, 94, 54, 0.025) 1px, transparent 1px);
+            background-size: 20px 20px;
             color: var(--text-dark);
             overflow-x: hidden;
             scroll-behavior: smooth;
@@ -69,7 +74,7 @@
             text-align: center;
             padding: 40px 20px;
             box-sizing: border-box;
-            background: linear-gradient(rgba(247, 249, 244, 0.8), rgba(247, 249, 244, 0.95)), url('Images/Fer&Hugo_StD_2026_047.jpg');
+            background: linear-gradient(rgba(250, 248, 245, 0.85), rgba(250, 248, 245, 0.96)), url('Images/Fer&Hugo_StD_2026_047.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -330,7 +335,7 @@
         }
 
         .section-light {
-            background-color: var(--white);
+            background-color: transparent; /* Hereda la textura sutil crema */
         }
         
         .section-title {
@@ -375,10 +380,12 @@
         }
 
         .gift-box {
-            background-color: var(--white);
+            background-color: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(5px);
             padding: 40px;
             border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border: 1px solid rgba(74, 94, 54, 0.1);
             margin-top: 30px;
         }
 
@@ -577,7 +584,7 @@
     <img src="Images/Fer&Hugo_StD_2026_043.jpg" alt="Fernanda y Hugo" class="img-banner fade-in">
 
     <!-- SECCIÓN DE REGALOS -->
-    <div class="section fade-in" style="background-color: var(--bg-color);">
+    <div class="section fade-in">
         <h2 class="section-title">Mesa de Regalos</h2>
         
         <img src="Images/Fer&Hugo_StD_2026_014.jpg" alt="Detalle del anillo" class="img-fluid fade-in">
@@ -642,13 +649,11 @@
           const icono = document.getElementById('icono-reproductor');
           const contenedorReproductor = document.getElementById('contenedor-reproductor-audio');
 
-          // Intentar iniciar la música automáticamente al cargar
           audio.play().then(() => {
               icono.className = 'icono-pausa';
               contenedorReproductor.classList.add('reproduciendo');
           }).catch(error => {
               console.log("El navegador requiere interacción para reproducir audio:", error);
-              // Si el navegador bloquea el autoplay, se reproduce al primer toque/clic en la página
               const activarAudioPorInteraccion = () => {
                   audio.play();
                   icono.className = 'icono-pausa';
@@ -660,9 +665,8 @@
               window.addEventListener('touchstart', activarAudioPorInteraccion);
           });
 
-          // Control manual con el botón
           btnPlayPause.addEventListener('click', (e) => {
-            e.stopPropagation(); // Evita conflictos con el evento global de clic
+            e.stopPropagation();
             if (audio.paused) {
               audio.play();
               icono.className = 'icono-pausa';
