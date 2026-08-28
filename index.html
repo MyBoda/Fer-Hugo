@@ -10,7 +10,6 @@
     </style>
     <style>
         :root {
-            /* Paleta Verde Olivo, Crema Texturizado y acentos Café/Bronce */
             --primary-color: #4A5E36; 
             --accent-color: #798D65; 
             --brown-line: #8C7860; 
@@ -44,7 +43,7 @@
             transform: translateY(0);
         }
 
-        /* --- ESTILOS DE ESQUINAS Y MARCOS BOTÁNICOS --- */
+        /* --- ESTILOS DE ESQUINAS Y MARCOS --- */
         .framed-section {
             position: relative;
         }
@@ -61,7 +60,6 @@
         .corner-bl { bottom: 10px; left: 10px; transform: scaleY(-1); }
         .corner-br { bottom: 10px; right: 10px; transform: rotate(180deg); }
 
-        /* --- LÍNEAS DE MARCO FLOTANTES --- */
         .card-border {
             position: absolute;
             top: 20px; left: 20px; right: 20px; bottom: 20px;
@@ -70,7 +68,6 @@
             z-index: 1;
         }
 
-        /* --- IMÁGENES RESPONSIVAS --- */
         .img-fluid {
             width: 85%;
             max-width: 450px;
@@ -155,7 +152,7 @@
             padding: 10px 30px;
         }
 
-        /* --- ESTILOS DEL REPRODUCTOR --- */
+        /* --- REPRODUCTOR DE MÚSICA --- */
         .contenedor-reproductor {
           display: flex;
           justify-content: center;
@@ -401,7 +398,7 @@
             fill: var(--primary-color);
         }
 
-        /* --- BLOQUES DE DETALLES Y REGALOS CON MARCO FLOTANTE --- */
+        /* --- BLOQUES DE DETALLES Y REGALOS --- */
         .detail-block {
             background-color: rgba(255, 255, 255, 0.65);
             padding: 60px 40px;
@@ -453,6 +450,7 @@
             position: relative;
             overflow: hidden;
             z-index: 2;
+            cursor: pointer;
         }
 
         .btn::before {
@@ -589,7 +587,7 @@
         </div>
     </div>
 
-    <!-- SECCIÓN DE DETALLES CON MARCOS FLOTANTES -->
+    <!-- SECCIÓN DE DETALLES -->
     <div class="section section-light fade-in" id="detalles">
         <h2 class="section-title">Cuándo & Dónde</h2>
         <span class="section-subtitle">Acompáñanos en nuestro gran día</span>
@@ -610,19 +608,13 @@
 
             <span class="detail-icon">
                 <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 2v5" />
-                    <path d="M10 4h4" />
-                    <path d="M8 12L12 7l4 5v10H8V12z" />
-                    <path d="M8 11L4 14v8h4" />
-                    <path d="M16 11l4 3v8h-4" />
-                    <path d="M10 22v-3a2 2 0 0 1 4 0v3" />
-                    <circle cx="12" cy="13" r="1.5" />
+                    <path d="M12 2v5" /><path d="M10 4h4" /><path d="M8 12L12 7l4 5v10H8V12z" /><path d="M8 11L4 14v8h4" /><path d="M16 11l4 3v8h-4" /><path d="M10 22v-3a2 2 0 0 1 4 0v3" /><circle cx="12" cy="13" r="1.5" />
                 </svg>
             </span>
             <p class="detail-text"><strong>Ceremonia Religiosa</strong></p>
             <p class="detail-text">Santuario del Señor de la Misericordia</p>
             <p class="detail-text">15:00 hrs.</p>
-            <a href="LINK_DE_GOOGLE_MAPS" target="_blank" class="btn">Ver Mapa</a>
+            <a href="https://maps.app.goo.gl/RyyEuV9XRZdZKXv38" target="_blank" class="btn">Ver Mapa</a>
         </div>
 
         <!-- RECEPCIÓN -->
@@ -635,21 +627,9 @@
 
             <span class="detail-icon">
                 <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 2v2" />
-                    <path d="M10 4l-1 1" />
-                    <path d="M14 4l1 1" />
-                    <g transform="translate(1, 2) rotate(15, 9, 12)">
-                        <path d="M6 4h6l-1 7c0 1.5-1 3-2 3s-2-1.5-2-3L6 4z" />
-                        <path d="M9 14v7" />
-                        <path d="M7 21h4" />
-                        <path d="M6.3 7h5.4" />
-                    </g>
-                    <g transform="translate(-1, 2) rotate(-15, 15, 12)">
-                        <path d="M12 4h6l-1 7c0 1.5-1 3-2 3s-2-1.5-2-3L12 4z" />
-                        <path d="M15 14v7" />
-                        <path d="M13 21h4" />
-                        <path d="M12.3 7h5.4" />
-                    </g>
+                    <path d="M12 2v2" /><path d="M10 4l-1 1" /><path d="M14 4l1 1" />
+                    <g transform="translate(1, 2) rotate(15, 9, 12)"><path d="M6 4h6l-1 7c0 1.5-1 3-2 3s-2-1.5-2-3L6 4z" /><path d="M9 14v7" /><path d="M7 21h4" /><path d="M6.3 7h5.4" /></g>
+                    <g transform="translate(-1, 2) rotate(-15, 15, 12)"><path d="M12 4h6l-1 7c0 1.5-1 3-2 3s-2-1.5-2-3L12 4z" /><path d="M15 14v7" /><path d="M13 21h4" /><path d="M12.3 7h5.4" /></g>
                 </svg>
             </span>
             <p class="detail-text"><strong>Recepción</strong></p>
@@ -662,7 +642,7 @@
     <!-- BANNER DE TRANSICIÓN CON FOTO -->
     <img src="Images/Fer&Hugo_StD_2026_043.jpg" alt="Fernanda y Hugo" class="img-banner fade-in">
 
-    <!-- SECCIÓN DE REGALOS CON MARCO FLOTANTE -->
+    <!-- SECCIÓN DE REGALOS -->
     <div class="section fade-in">
         <h2 class="section-title">Mesa de Regalos</h2>
         
@@ -704,6 +684,37 @@
         <p class="detail-text" style="max-width: 500px; margin: 0 auto 30px auto;">Nos haría muy felices compartir este momento contigo. Por favor, confirma tu asistencia antes del 1 de Noviembre.</p>
         
         <a href="https://wa.me/+5212212107490" target="_blank" class="btn btn-solid">Confirmar Asistencia</a>
+    </div>
+
+    <!-- NUEVA SECCIÓN: COMPARTIR FOTOS (CONECTADA A GOOGLE DRIVE) -->
+    <div class="section fade-in" id="compartir-fotos">
+        <h2 class="section-title">Comparte tus Fotos</h2>
+        <span class="section-subtitle">Momentos inolvidables</span>
+        
+        <div class="floral-divider">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.5,3.5C15.5,3.5 13.8,4.8 13.2,6.6C11.9,6 10.4,6.2 9.3,7.3C7.9,8.7 7.7,11 9,12.5C7.9,13.2 7.2,14.5 7.4,15.9C7.7,18.1 9.6,19.7 11.8,19.7C13.5,19.7 15,18.7 15.8,17.2C17.3,17.5 18.9,16.8 19.8,15.5C20.8,14.1 20.7,12.2 19.7,10.9C20.3,9.4 19.9,7.6 18.6,6.5C18.3,6.1 17.9,5.8 17.5,5.5V3.5Z"/>
+            </svg>
+        </div>
+
+        <div class="gift-box framed-section" style="max-width: 650px; margin: 0 auto;">
+            <div class="card-border"></div>
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-tl">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-tr">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-bl">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-br">
+
+            <p class="detail-text" style="margin-bottom: 25px;">
+                ¿Tomaste fotos o videos durante la celebración? Súbelos aquí para que podamos conservar cada instante de nuestra boda.
+            </p>
+
+            <form id="upload-form" style="display: flex; flex-direction: column; gap: 15px; align-items: center;">
+                <input type="file" id="photo-file" accept="image/*,video/*" required style="font-family: 'Montserrat', sans-serif; font-size: 0.9rem; color: var(--text-dark); padding: 12px; border: 1px dashed var(--brown-line); border-radius: 4px; width: 100%; max-width: 450px; background: rgba(250,248,245,0.6); cursor: pointer;">
+                
+                <button type="submit" class="btn btn-solid" id="btn-subir" style="margin-top: 10px;">Subir Recuerdo</button>
+                <p id="upload-status" style="font-size: 0.95rem; color: var(--primary-color); margin-top: 15px; display: none; font-weight: 600;"></p>
+            </form>
+        </div>
     </div>
 
     <!-- PIE DE PÁGINA -->
@@ -776,7 +787,54 @@
           });
         });
 
-        // 3. LÓGICA DE ANIMACIÓN AL HACER SCROLL (Fade-in)
+        // 3. LÓGICA DE SUBIDA A GOOGLE DRIVE
+        const scriptURL = https://script.google.com/macros/s/AKfycbz4FPnnAPCQWyU6TVsVYR1EFJafR1X42jky86SgI6l_TXIQOOBF9kwhwh3QKgWkK-zO/exec;
+        const form = document.getElementById('upload-form');
+        const statusText = document.getElementById('upload-status');
+        const btnSubir = document.getElementById('btn-subir');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const fileInput = document.getElementById('photo-file');
+            if (fileInput.files.length === 0) return;
+
+            const file = fileInput.files[0];
+            btnSubir.disabled = true;
+            btnSubir.innerText = 'Subiendo...';
+            statusText.style.display = 'block';
+            statusText.innerText = 'Subiendo tu archivo a la nube, por favor espera...';
+
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function () {
+                const rawData = reader.result.split(',')[1];
+                const data = {
+                    filename: file.name,
+                    mimeType: file.type,
+                    fileData: rawData
+                };
+
+                fetch(scriptURL, {
+                    method: 'POST',
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(result => {
+                    statusText.innerText = '¡Archivo subido con éxito! Muchas gracias por compartir tus recuerdos.';
+                    form.reset();
+                    btnSubir.disabled = false;
+                    btnSubir.innerText = 'Subir Otro Archivo';
+                })
+                .catch(error => {
+                    console.error('Error!', error);
+                    statusText.innerText = 'Hubo un error al subir el archivo. Inténtalo de nuevo.';
+                    btnSubir.disabled = false;
+                    btnSubir.innerText = 'Subir Recuerdo';
+                });
+            };
+        });
+
+        // 4. LÓGICA DE ANIMACIÓN AL HACER SCROLL (Fade-in)
         document.addEventListener("DOMContentLoaded", function() {
             const faders = document.querySelectorAll('.fade-in');
             
