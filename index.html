@@ -787,8 +787,8 @@
           });
         });
 
-        // 3. LÓGICA DE SUBIDA A GOOGLE DRIVE
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbx8i2a0qZ6RzRJN7w8r28EwL3WnmNLRBcukVQ2pXhLB6XZ5W6WfnGg-_O1Y_gplYA1W/exec'; // 
+        // 3. LÓGICA DE SUBIDA A GOOGLE DRIVE (Enlace actualizado)
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwL_eQypLJ_iNiJv2gc4uMnppUtj5Ky8_ifHIa_CHcfhYLtQItbQ1IPxAV5m8Hg_WNY/exec'; 
         const form = document.getElementById('upload-form');
         const statusText = document.getElementById('upload-status');
         const btnSubir = document.getElementById('btn-subir');
@@ -814,31 +814,30 @@
                     fileData: rawData
                 };
 
-fetch(scriptURL, {
-    method: 'POST',
-    body: JSON.stringify(data)
-})
-.then(response => response.json())
-.then(result => {
-    if (result.result === 'success') {
-        statusText.innerText = '¡Archivo subido con éxito! Muchas gracias por compartir tus recuerdos.';
-        form.reset();
-        btnSubir.disabled = false;
-        btnSubir.innerText = 'Subir Otro Archivo';
-    } else {
-        // Esto te mostrará el error real en pantalla si algo falla en Google Drive
-        statusText.innerText = 'Error al subir: ' + (result.error || 'Desconocido');
-        console.error('Error detallado:', result);
-        btnSubir.disabled = false;
-        btnSubir.innerText = 'Intentar de nuevo';
-    }
-})
-.catch(error => {
-    console.error('Error de red!', error);
-    statusText.innerText = 'Hubo un error de conexión. Inténtalo de nuevo.';
-    btnSubir.disabled = false;
-    btnSubir.innerText = 'Subir Recuerdo';
-});
+                fetch(scriptURL, {
+                    method: 'POST',
+                    body: JSON.stringify(data)
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.result === 'success') {
+                        statusText.innerText = '¡Archivo subido con éxito! Muchas gracias por compartir tus recuerdos.';
+                        form.reset();
+                        btnSubir.disabled = false;
+                        btnSubir.innerText = 'Subir Otro Archivo';
+                    } else {
+                        statusText.innerText = 'Error al subir: ' + (result.error || 'Desconocido');
+                        console.error('Error detallado:', result);
+                        btnSubir.disabled = false;
+                        btnSubir.innerText = 'Intentar de nuevo';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error de red!', error);
+                    statusText.innerText = 'Hubo un error de conexión. Inténtalo de nuevo.';
+                    btnSubir.disabled = false;
+                    btnSubir.innerText = 'Subir Recuerdo';
+                });
             };
         });
 
