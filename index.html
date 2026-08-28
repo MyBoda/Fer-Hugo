@@ -814,23 +814,31 @@
                     fileData: rawData
                 };
 
-                fetch(scriptURL, {
-                    method: 'POST',
-                    body: JSON.stringify(data)
-                })
-                .then(response => response.json())
-                .then(result => {
-                    statusText.innerText = '¡Archivo subido con éxito! Muchas gracias por compartir tus recuerdos.';
-                    form.reset();
-                    btnSubir.disabled = false;
-                    btnSubir.innerText = 'Subir Otro Archivo';
-                })
-                .catch(error => {
-                    console.error('Error!', error);
-                    statusText.innerText = 'Hubo un error al subir el archivo. Inténtalo de nuevo.';
-                    btnSubir.disabled = false;
-                    btnSubir.innerText = 'Subir Recuerdo';
-                });
+fetch(scriptURL, {
+    method: 'POST',
+    body: JSON.stringify(data)
+})
+.then(response => response.json())
+.then(result => {
+    if (result.result === 'success') {
+        statusText.innerText = '¡Archivo subido con éxito! Muchas gracias por compartir tus recuerdos.';
+        form.reset();
+        btnSubir.disabled = false;
+        btnSubir.innerText = 'Subir Otro Archivo';
+    } else {
+        // Esto te mostrará el error real en pantalla si algo falla en Google Drive
+        statusText.innerText = 'Error al subir: ' + (result.error || 'Desconocido');
+        console.error('Error detallado:', result);
+        btnSubir.disabled = false;
+        btnSubir.innerText = 'Intentar de nuevo';
+    }
+})
+.catch(error => {
+    console.error('Error de red!', error);
+    statusText.innerText = 'Hubo un error de conexión. Inténtalo de nuevo.';
+    btnSubir.disabled = false;
+    btnSubir.innerText = 'Subir Recuerdo';
+});
             };
         });
 
