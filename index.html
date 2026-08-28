@@ -13,8 +13,8 @@
             /* Paleta Verde Olivo, Crema Texturizado y acentos Café/Bronce */
             --primary-color: #4A5E36; 
             --accent-color: #798D65; 
-            --brown-line: #8C7860; /* Tono café elegante para líneas y marcos */
-            --bg-color: #FAF8F5; /* Crema marfil elegante */
+            --brown-line: #8C7860; 
+            --bg-color: #FAF8F5; 
             --text-dark: #3A452B;
             --text-light: #6A755D;
             --white: #FFFFFF;
@@ -25,7 +25,6 @@
             padding: 0;
             font-family: 'Montserrat', sans-serif; 
             background-color: var(--bg-color);
-            /* Textura fina estilo papel de invitación de boda */
             background-image: 
                 linear-gradient(90deg, rgba(74, 94, 54, 0.025) 1px, transparent 1px),
                 linear-gradient(0deg, rgba(74, 94, 54, 0.025) 1px, transparent 1px);
@@ -45,7 +44,24 @@
             transform: translateY(0);
         }
 
-        /* --- IMÁGENES RESPONSIVAS AJUSTADAS --- */
+        /* --- ESTILOS DE ESQUINAS BOTÁNICAS --- */
+        .framed-section {
+            position: relative;
+        }
+        .corner-decoration {
+            position: absolute;
+            width: 140px;
+            max-width: 25%;
+            pointer-events: none;
+            z-index: 2;
+            opacity: 0.95;
+        }
+        .corner-tl { top: 15px; left: 15px; }
+        .corner-tr { top: 15px; right: 15px; transform: scaleX(-1); }
+        .corner-bl { bottom: 15px; left: 15px; transform: scaleY(-1); }
+        .corner-br { bottom: 15px; right: 15px; transform: rotate(180deg); }
+
+        /* --- IMÁGENES RESPONSIVAS --- */
         .img-fluid {
             width: 85%;
             max-width: 450px;
@@ -76,9 +92,9 @@
             justify-content: center; 
             align-items: center;
             text-align: center;
-            padding: 40px 20px;
+            padding: 60px 20px;
             box-sizing: border-box;
-            background: linear-gradient(rgba(250, 248, 245, 0.85), rgba(250, 248, 245, 0.96)), url('Images/Fer&Hugo_StD_2026_047.jpg');
+            background: linear-gradient(rgba(250, 248, 245, 0.88), rgba(250, 248, 245, 0.97)), url('Images/Fer&Hugo_StD_2026_047.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -86,7 +102,7 @@
         
         .hero-border {
             position: absolute;
-            top: 20px; left: 20px; right: 20px; bottom: 20px;
+            top: 25px; left: 25px; right: 25px; bottom: 25px;
             border: 1px solid var(--brown-line);
             pointer-events: none;
             z-index: 1;
@@ -332,7 +348,7 @@
             color: rgba(255,255,255,0.8);
         }
 
-        /* --- SECCIONES GENERALES Y TARJETAS ENMARCADAS --- */
+        /* --- SECCIONES GENERALES --- */
         .section { 
             padding: 100px 20px; 
             max-width: 900px; 
@@ -363,7 +379,7 @@
             display: block;
         }
 
-        /* --- SEPARADOR BOTÁNICO / LÍNEA ELEGANTE --- */
+        /* --- SEPARADOR BOTÁNICO --- */
         .floral-divider {
             display: flex;
             align-items: center;
@@ -387,7 +403,7 @@
         .detail-block {
             background-color: rgba(255, 255, 255, 0.65);
             border: 1px solid var(--brown-line);
-            padding: 40px 20px;
+            padding: 50px 30px;
             border-radius: 4px;
             margin-bottom: 30px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.02);
@@ -414,7 +430,7 @@
         .gift-box {
             background-color: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(5px);
-            padding: 45px 30px;
+            padding: 55px 30px;
             border-radius: 4px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.03);
             border: 1px solid var(--brown-line);
@@ -485,12 +501,19 @@
                 box-sizing: border-box;
             } 
             .countdown-box::after { display: none; }
+            .corner-decoration { width: 100px; }
         }
     </style>
 </head>
 <body>
-    <!-- SECCIÓN PRINCIPAL (HERO) -->
-    <div class="hero" id="inicio">
+    <!-- SECCIÓN PRINCIPAL (HERO) CON MARCO DE ESQUINAS -->
+    <div class="hero framed-section" id="inicio">
+        <!-- Esquinas Botánicas Hero -->
+        <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-tl">
+        <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-tr">
+        <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-bl">
+        <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-br">
+
         <div class="hero-border"></div>
         <div class="hero-content fade-in">
             <p class="pre-title">Tenemos el honor de invitarte a</p>
@@ -567,7 +590,7 @@
         </div>
     </div>
 
-    <!-- SECCIÓN DE DETALLES -->
+    <!-- SECCIÓN DE DETALLES CON MARCO BOTÁNICO -->
     <div class="section section-light fade-in" id="detalles">
         <h2 class="section-title">Cuándo & Dónde</h2>
         <span class="section-subtitle">Acompáñanos en nuestro gran día</span>
@@ -579,7 +602,12 @@
         </div>
 
         <!-- IGLESIA -->
-        <div class="detail-block">
+        <div class="detail-block framed-section">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-tl">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-tr">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-bl">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-br">
+
             <span class="detail-icon">
                 <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 2v5" />
@@ -598,7 +626,12 @@
         </div>
 
         <!-- RECEPCIÓN -->
-        <div class="detail-block">
+        <div class="detail-block framed-section">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-tl">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-tr">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-bl">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-br">
+
             <span class="detail-icon">
                 <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M12 2v2" />
@@ -628,7 +661,7 @@
     <!-- BANNER DE TRANSICIÓN CON FOTO -->
     <img src="Images/Fer&Hugo_StD_2026_043.jpg" alt="Fernanda y Hugo" class="img-banner fade-in">
 
-    <!-- SECCIÓN DE REGALOS -->
+    <!-- SECCIÓN DE REGALOS CON MARCO BOTÁNICO -->
     <div class="section fade-in">
         <h2 class="section-title">Mesa de Regalos</h2>
         
@@ -640,7 +673,12 @@
 
         <img src="Images/Fer&Hugo_StD_2026_014.jpg" alt="Detalle del anillo" class="img-fluid fade-in">
         
-        <div class="gift-box">
+        <div class="gift-box framed-section">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-tl">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-tr">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-bl">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-br">
+
             <p class="detail-text" style="max-width: 600px; margin: 0 auto 30px auto;">
                 Su presencia es nuestro mayor regalo, pero si desean tener un detalle con nosotros, pueden encontrar nuestra mesa de regalos en:
             </p>
@@ -699,7 +737,7 @@
             }
         }, 1000);
 
-        // 2. LÓGICA DEL REPRODUCTOR DE MÚSICA (AUTOPLAY Y ANIMACIÓN)
+        // 2. LÓGICA DEL REPRODUCTOR DE MÚSICA
         document.addEventListener('DOMContentLoaded', () => {
           const audio = document.getElementById('musica-fondo');
           const btnPlayPause = document.getElementById('btn-play-pause');
