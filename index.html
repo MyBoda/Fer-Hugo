@@ -102,6 +102,77 @@
             </div>
         </section>
 
+        <!-- CUÁNDO & DÓNDE -->
+        <section class="section fade-in" id="detalles">
+            <h2 class="section-title">Cuándo & Dónde</h2>
+            <span class="section-subtitle">Acompáñanos en nuestro gran día</span>
+            <div class="floral-divider">
+                <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4Z"/></svg>
+            </div>
+
+            <!-- IGLESIA -->
+            <div class="detail-block framed-section" style="background: rgba(255, 255, 255, 0.65); padding: 40px; border-radius: 4px; margin-bottom: 20px;">
+                <p class="detail-text"><strong>Ceremonia Religiosa</strong></p>
+                <p class="detail-text">Santuario del Señor de la Misericordia</p>
+                <p class="detail-text">15:00 hrs.</p>
+                <a href="https://maps.app.goo.gl/RyyEuV9XRZdZKXv38" target="_blank" class="btn">Ver Mapa</a>
+            </div>
+
+            <!-- RECEPCIÓN -->
+            <div class="detail-block framed-section" style="background: rgba(255, 255, 255, 0.65); padding: 40px; border-radius: 4px;">
+                <p class="detail-text"><strong>Recepción</strong></p>
+                <p class="detail-text">Hotel Posada Señorial</p>
+                <p class="detail-text">17:00 hrs.</p>
+                <a href="https://share.google/oNMljRJuNwNq5EygN" target="_blank" class="btn">Ver Mapa</a>
+            </div>
+        </section>
+
+        <!-- MESA DE REGALOS -->
+        <section class="section fade-in">
+            <h2 class="section-title">Mesa de Regalos</h2>
+            <div class="floral-divider">
+                <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4Z"/></svg>
+            </div>
+            <div class="gift-box framed-section" style="background: rgba(255, 255, 255, 0.75); padding: 40px; border-radius: 4px;">
+                <p class="detail-text" style="max-width: 600px; margin: 0 auto 20px auto;">
+                    Su presencia es nuestro mayor regalo, pero si desean tener un detalle con nosotros:
+                </p>
+                <h3 style="font-family: 'Playfair Display', serif; color: var(--primary-color); font-size: 1.8rem; margin: 10px 0;">Liverpool</h3>
+                <p class="detail-text" style="font-size: 1.3rem; letter-spacing: 2px;">No. de Evento: <strong>52028584</strong></p>
+                <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/52028584" target="_blank" class="btn">Ver Mesa de Regalos</a>
+            </div>
+        </section>
+
+        <!-- ASISTENCIA / RSVP -->
+        <section class="section section-light fade-in">
+            <h2 class="section-title">Asistencia</h2>
+            <span class="section-subtitle">RSVP</span>
+            <div class="floral-divider">
+                <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4Z"/></svg>
+            </div>
+            <p class="detail-text" style="max-width: 500px; margin: 0 auto 30px auto;">Nos haría muy felices compartir este momento contigo. Por favor, confirma tu asistencia.</p>
+            <a href="https://wa.me/+5212212107490" target="_blank" class="btn btn-solid">Confirmar Asistencia</a>
+        </section>
+
+        <!-- COMPARTIR FOTOS -->
+        <section class="section fade-in" id="compartir-fotos">
+            <h2 class="section-title">Comparte tus Fotos</h2>
+            <span class="section-subtitle">Momentos inolvidables</span>
+            <div class="floral-divider">
+                <svg viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4Z"/></svg>
+            </div>
+            <div class="gift-box framed-section" style="max-width: 650px; margin: 0 auto; background: rgba(255, 255, 255, 0.75); padding: 40px; border-radius: 4px;">
+                <p class="detail-text" style="margin-bottom: 25px;">
+                    ¿Tomaste fotos o videos durante la celebración? Súbelos aquí para conservar cada instante.
+                </p>
+                <form id="upload-form" style="display: flex; flex-direction: column; gap: 15px; align-items: center;">
+                    <input type="file" id="photo-file" accept="image/*,video/*" required style="padding: 12px; border: 1px dashed var(--brown-line); border-radius: 4px; width: 100%; max-width: 450px; background: rgba(250,248,245,0.6);">
+                    <button type="submit" class="btn btn-solid" id="btn-subir" style="margin-top: 10px;">Subir Recuerdo</button>
+                    <p id="upload-status" style="font-size: 0.95rem; color: var(--primary-color); margin-top: 15px; display: none; font-weight: 600;"></p>
+                </form>
+            </div>
+        </section>
+
         <!-- FOOTER -->
         <footer class="footer">
             <p class="footer-names">Fer & Hugo</p>
