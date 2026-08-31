@@ -594,8 +594,14 @@ h1 {
     filter: hue-rotate(48deg) saturate(3.2) brightness(1.15) drop-shadow(0 6px 12px rgba(0, 0, 0, 0.5));
 }
 .envelope-corner-olivo {
-    position: absolute; bottom: 15px; left: 15px; width: 110px; height: auto;
-    z-index: 12; pointer-events: none; opacity: 0.95;
+    position: absolute; 
+    bottom: -15px; /* Empuja el tallo exacto al borde inferior */
+    left: -15px;   /* Empuja el tallo exacto al borde izquierdo */
+    width: 170px;  /* Tamaño mucho más grande e imponente */
+    height: auto;
+    z-index: 12; 
+    pointer-events: none; 
+    opacity: 0.95;
 }
 .open-text {
     margin-top: 25px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem;
@@ -605,5 +611,9 @@ h1 {
 
 @media (max-width: 600px) { 
     .envelope-box-css { width: 320px; height: 220px; }
-    .envelope-corner-olivo { width: 85px; }
+    .envelope-corner-olivo { 
+        width: 125px; 
+        bottom: -10px; 
+        left: -10px; 
+    }
 }
