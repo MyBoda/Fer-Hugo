@@ -32,7 +32,7 @@ body, html {
     transform: translateY(0);
 }
 
-/* --- SOBRE VICTORIANO Y TEXTURA DE PAPEL --- */
+/* --- SOBRE REAL CON IMAGEN Y SELLO 3D DORADO --- */
 .envelope-overlay {
     position: fixed;
     top: 0;
@@ -56,7 +56,7 @@ body, html {
 .envelope-container {
     text-align: center;
     width: 90%;
-    max-width: 420px;
+    max-width: 400px;
     padding: 20px;
 }
 
@@ -64,84 +64,74 @@ body, html {
     font-family: 'Playfair Display', serif;
     font-size: 2.4rem;
     color: #2C3529;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     font-style: italic;
     text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
-/* Cuerpo principal del sobre: Simula cartulina con textura y sombra profunda */
+/* Cuerpo principal del sobre usando tu imagen de fondo vertical */
 .envelope-box-css {
     position: relative;
     width: 100%;
-    max-width: 380px;
-    height: 240px;
+    max-width: 340px;
+    height: 480px;
     margin: 0 auto;
-    background: linear-gradient(135deg, #5c7336 0%, #4a5e2c 100%);
-    border-radius: 4px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), inset 0 0 25px rgba(0, 0, 0, 0.15);
+    background-image: url('Images/sobreverdeolivo.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 6px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35), inset 0 0 15px rgba(0,0,0,0.2);
     cursor: pointer;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
-    border: 1px solid #3d4e22;
 }
 
 .envelope-box-css:hover {
     transform: translateY(-4px);
-    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3), inset 0 0 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0,0,0,0.2);
 }
 
-/* Solapa superior del sobre (100% adaptable y responsiva para móviles) */
-.envelope-flap-top {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 120px;
-    background: #3d4e22; /* Tono más oscuro para el doblez */
-    clip-path: polygon(0 0, 100% 0, 50% 100%);
-    filter: drop-shadow(0 4px 5px rgba(0,0,0,0.2));
-    z-index: 5;
-}
-
-/* Sello de lacre estilo antiguo (Efecto cera orgánica 3D en tonos dorados) */
-.wax-seal {
+/* Contenedor y posicionamiento del sello de lacre */
+.wax-seal-real-container {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 82px;
-    height: 82px;
-    /* Gradiente radial enriquecido para simular brillo de cera metálica/dorada */
-    background: radial-gradient(circle at 30% 30%, #fde088 0%, #d49e23 45%, #96660f 75%, #593c04 100%);
-    /* Bordes irregulares y orgánicos simulando cera derretida moldeada a mano */
-    border-radius: 42% 58% 47% 53% / 52% 43% 57% 48%;
-    box-shadow: 
-        0 10px 22px rgba(0, 0, 0, 0.45), /* Sombra exterior profunda */
-        inset 0 3px 6px rgba(255, 255, 255, 0.65), /* Brillo superior de la cera */
-        inset 0 -5px 10px rgba(50, 25, 2, 0.7), /* Sombra interior inferior */
-        inset 2px 0 5px rgba(255, 255, 255, 0.3), /* Reflejo lateral */
-        inset -2px 0 5px rgba(40, 20, 1, 0.5);
-    border: 2px solid #5a3d06;
+    width: 95px;
+    height: 95px;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 10;
+    transition: transform 0.3s ease;
+}
+
+.envelope-box-css:hover .wax-seal-real-container {
+    transform: translate(-50%, -50%) scale(1.06);
+}
+
+/* Imagen del sello con filtro profesional para transformarlo a color DORADO/AMARILLO */
+.wax-seal-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: hue-rotate(35deg) saturate(2.4) brightness(1.15) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.5));
+}
+
+/* Tus iniciales grabadas sobre el sello */
+.wax-seal-initials {
+    position: absolute;
     font-family: 'Playfair Display', serif;
     font-weight: bold;
     color: #3b2502;
     font-size: 1.3rem;
     letter-spacing: 1px;
-    z-index: 10;
-    /* Efecto de grabado en bajorrelieve para las letras */
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5), 0 -1px 1px rgba(0, 0, 0, 0.8);
-    transition: transform 0.3s ease;
-}
-
-.envelope-box-css:hover .wax-seal {
-    transform: translate(-50%, -50%) scale(1.06);
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7), 0 -1px 1px rgba(0, 0, 0, 0.8);
+    pointer-events: none;
 }
 
 /* Texto inferior */
 .open-text {
-    margin-top: 28px;
+    margin-top: 25px;
     font-family: 'Montserrat', sans-serif;
     font-size: 0.9rem;
     letter-spacing: 2.5px;
@@ -156,9 +146,6 @@ body, html {
 }
 
 /* --- ESTILOS DE ESQUINAS Y MARCOS --- */
-.framed-section {
-    position: relative;
-}
 .corner-decoration {
     position: absolute;
     width: 140px;
@@ -169,37 +156,6 @@ body, html {
 }
 .corner-tl { top: 10px; left: 10px; }
 .corner-tr { top: 10px; right: 10px; transform: scaleX(-1); }
-.corner-bl { bottom: 10px; left: 10px; transform: scaleY(-1); }
-.corner-br { bottom: 10px; right: 10px; transform: rotate(180deg); }
-
-.card-border {
-    position: absolute;
-    top: 20px; left: 20px; right: 20px; bottom: 20px;
-    border: 1px solid var(--brown-line);
-    pointer-events: none;
-    z-index: 1;
-}
-
-.img-fluid {
-    width: 85%;
-    max-width: 450px;
-    max-height: 55vh;
-    object-fit: cover;
-    border-radius: 4px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-    border: 1px solid rgba(140, 120, 96, 0.2);
-    margin: 30px auto;
-    display: block;
-}
-.img-banner {
-    width: 100%;
-    height: 40vh;
-    object-fit: cover;
-    display: block;
-    margin: 0;
-    border-top: 1px solid var(--brown-line);
-    border-bottom: 1px solid var(--brown-line);
-}
 
 /* --- SECCIÓN HERO --- */
 .hero { 
@@ -212,10 +168,7 @@ body, html {
     text-align: center;
     padding: 60px 20px;
     box-sizing: border-box;
-    background: linear-gradient(rgba(250, 248, 245, 0.88), rgba(250, 248, 245, 0.97)), url('Images/Fer&Hugo_StD_2026_047.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background: linear-gradient(rgba(250, 248, 245, 0.88), rgba(250, 248, 245, 0.97));
 }
 
 .hero-content {
@@ -248,8 +201,8 @@ h1 {
     font-style: italic;
     font-size: clamp(2rem, 6vw, 3rem);
     color: var(--brown-line);
-    display: block;
-    margin: 5px 0;
+    display: inline-block;
+    margin: 0 5px;
 }
 
 .wedding-date-hero { 
@@ -311,19 +264,6 @@ h1 {
     transform-origin: center;
 }
 
-.reproductor-audio.reproduciendo .ondas .barra:nth-child(odd) {
-    animation-duration: 0.8s;
-    animation-delay: 0.1s;
-}
-.reproductor-audio.reproduciendo .ondas .barra:nth-child(even) {
-    animation-duration: 1.1s;
-    animation-delay: 0.3s;
-}
-.reproductor-audio.reproduciendo .ondas .barra:nth-child(3n) {
-    animation-duration: 0.9s;
-    animation-delay: 0.2s;
-}
-
 .btn-reproductor {
   background-color: var(--white);
   border: none;
@@ -373,7 +313,27 @@ h1 {
     font-size: 1.3rem;
     line-height: 1.8;
     color: var(--primary-color);
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+}
+
+.floral-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 0 auto 30px auto;
+    max-width: 200px;
+}
+.floral-divider::before, .floral-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: var(--brown-line);
+}
+.floral-divider svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--primary-color);
 }
 
 .parents-grid {
@@ -381,10 +341,10 @@ h1 {
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 30px;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 .parents-block p {
-    margin: 5px 0;
+    margin: 8px 0;
     font-size: 1rem;
     color: var(--text-dark);
 }
@@ -430,15 +390,6 @@ h1 {
     flex: 1; 
     min-width: 90px; 
     max-width: 140px;
-    position: relative;
-}
-
-.countdown-box::after {
-    content: '';
-    position: absolute;
-    bottom: 35%; left: 20%; right: 20%;
-    height: 1px;
-    background-color: rgba(255,255,255,0.2);
 }
 
 .countdown-box span { 
@@ -458,134 +409,7 @@ h1 {
     color: rgba(255,255,255,0.8);
 }
 
-/* --- SECCIONES GENERALES --- */
-.section { 
-    padding: 100px 20px; 
-    max-width: 900px; 
-    margin: 0 auto; 
-    text-align: center;
-}
-
-.section-light {
-    background-color: transparent; 
-}
-
-.section-title {
-    font-family: 'Playfair Display', serif; 
-    color: var(--primary-color);
-    font-size: clamp(2.5rem, 6vw, 3.5rem);
-    margin-bottom: 10px;
-    font-weight: 400;
-}
-
-.section-subtitle {
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 0.8rem;
-    line-height: 1.6;
-    color: var(--primary-color);
-    margin-bottom: 30px;
-    display: block;
-}
-
-/* --- SEPARADOR BOTÁNICO --- */
-.floral-divider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    margin: 0 auto 40px auto;
-    max-width: 250px;
-}
-.floral-divider::before, .floral-divider::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background-color: var(--brown-line);
-}
-.floral-divider svg {
-    width: 24px;
-    height: 24px;
-    fill: var(--primary-color);
-}
-
-/* --- BLOQUES DE DETALLES Y REGALOS --- */
-.detail-block {
-    background-color: rgba(255, 255, 255, 0.65);
-    padding: 60px 40px;
-    border-radius: 4px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-}
-
-.gift-box {
-    background-color: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(5px);
-    padding: 65px 40px;
-    border-radius: 4px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-    margin-top: 30px;
-}
-
-.detail-icon {
-    color: var(--accent-color);
-    margin-bottom: 15px;
-    display: block;
-}
-
-.detail-text {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: var(--text-light);
-    margin: 5px 0;
-}
-
-.detail-text strong {
-    color: var(--text-dark);
-    font-weight: 600;
-}
-
-/* --- BOTONES --- */
-.btn { 
-    display: inline-block; 
-    padding: 16px 35px; 
-    background-color: transparent;
-    color: var(--primary-color); 
-    border: 1px solid var(--brown-line);
-    text-decoration: none; 
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-    margin-top: 20px; 
-    transition: all 0.4s ease; 
-    position: relative;
-    overflow: hidden;
-    z-index: 2;
-    cursor: pointer;
-}
-
-.btn::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: var(--primary-color);
-    z-index: -1;
-    transform: scaleY(0);
-    transform-origin: bottom;
-    transition: transform 0.4s ease;
-}
-
-.btn:hover { color: var(--white); border-color: var(--primary-color); }
-.btn:hover::before { transform: scaleY(1); }
-
-.btn-solid {
-    background-color: var(--primary-color);
-    color: var(--white);
-    border: none;
-}
-.btn-solid::before { background-color: var(--accent-color); }
-
+/* --- FOOTER --- */
 .footer { 
     background-color: var(--primary-color);
     color: rgba(255,255,255,0.6);
@@ -600,7 +424,7 @@ h1 {
     font-family: 'Great Vibes', cursive;
     font-size: 2.2rem;
     color: var(--white);
-    margin-bottom: 15px !important;
+    margin-bottom: 10px !important;
 }
 
 @media (max-width: 600px) { 
@@ -610,6 +434,5 @@ h1 {
         min-width: calc(50% - 15px); 
         box-sizing: border-box;
     } 
-    .countdown-box::after { display: none; }
     .corner-decoration { width: 100px; }
 }
