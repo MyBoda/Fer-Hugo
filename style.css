@@ -32,14 +32,15 @@ body, html {
     transform: translateY(0);
 }
 
-/* --- ESTILOS DEL SOBRE EN CSS PURO (VERDE OLIVO Y DORADO) --- */
+/* --- SOBRE VICTORIANO Y TEXTURA DE PAPEL --- */
 .envelope-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #F7F5F0;
+    /* Fondo con tono pergamino/marfil suave para aislar la carta */
+    background: radial-gradient(circle, #f4efe6 0%, #e6dfd1 100%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,78 +57,94 @@ body, html {
 .envelope-container {
     text-align: center;
     width: 90%;
-    max-width: 400px;
+    max-width: 420px;
     padding: 20px;
 }
 
 .envelope-title {
     font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     color: #2C3529;
     margin-bottom: 25px;
     font-style: italic;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
-/* Cuerpo principal del sobre (Verde Olivo) */
+/* Cuerpo principal del sobre: Simula cartulina con textura y sombra profunda */
 .envelope-box-css {
     position: relative;
     width: 100%;
-    max-width: 360px;
-    height: 230px;
+    max-width: 380px;
+    height: 240px;
     margin: 0 auto;
-    background-color: #556B2F;
-    border-radius: 6px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, #5c7336 0%, #4a5e2c 100%);
+    border-radius: 4px;
+    /* Sombra exterior fuerte y sombra interna (inset) para simular grosor de papel */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), inset 0 0 25px rgba(0, 0, 0, 0.15);
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid #3d4e22;
 }
 
 .envelope-box-css:hover {
     transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3), inset 0 0 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Solapa superior triangular del sobre */
+/* Solapa superior del sobre con efecto de doblez y sombra de papel */
 .envelope-flap-top {
     position: absolute;
     top: 0;
     left: 0;
     width: 0;
     height: 0;
-    border-left: 180px solid transparent;
-    border-right: 180px solid transparent;
-    border-top: 120px solid #435424;
+    border-left: 190px solid transparent;
+    border-right: 190px solid transparent;
+    border-top: 130px solid #3d4e22; /* Tono más oscuro para el doblez */
+    filter: drop-shadow(0 4px 5px rgba(0,0,0,0.2));
 }
 
-/* Sello de lacre dorado al centro */
+/* Sello de lacre antiguo (Efecto 3D y bordes orgánicos) */
 .wax-seal {
     position: absolute;
-    top: 48%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 65px;
-    height: 65px;
-    background: radial-gradient(circle, #f3e08a 0%, #d4af37 60%, #aa7c11 100%);
-    border-radius: 50%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
-    border: 2px solid #fff8d6;
+    width: 72px;
+    height: 72px;
+    /* Degradado complejo para imitar la luz sobre la cera metálica antigua */
+    background: radial-gradient(circle at 35% 35%, #f9e7b2 0%, #d4af37 45%, #997517 80%, #6b500c 100%);
+    /* Bordes ligeramente asimétricos para que parezca un sello de cera real moldeado a mano */
+    border-radius: 48% 52% 47% 53% / 50% 48% 52% 50%;
+    /* Múltiples sombras: relieve exterior y profundidad interior (hundido por el sello) */
+    box-shadow: 
+        0 6px 15px rgba(0, 0, 0, 0.4),
+        inset 0 2px 3px rgba(255, 255, 255, 0.6),
+        inset 0 -3px 4px rgba(0, 0, 0, 0.4);
+    border: 2px solid #5a4208;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Playfair Display', serif;
     font-weight: bold;
-    color: #4a3800;
-    font-size: 1.1rem;
+    color: #3b2b04;
+    font-size: 1.2rem;
     letter-spacing: 1px;
     z-index: 10;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+    transition: transform 0.3s ease;
 }
 
-/* Texto inferior de apertura */
+.envelope-box-css:hover .wax-seal {
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* Texto inferior */
 .open-text {
-    margin-top: 25px;
+    margin-top: 28px;
     font-family: 'Montserrat', sans-serif;
     font-size: 0.9rem;
-    letter-spacing: 2px;
+    letter-spacing: 2.5px;
     color: #2C3529;
     font-weight: 600;
     cursor: pointer;
@@ -136,52 +153,6 @@ body, html {
 
 .open-text:hover {
     color: #556B2F;
-}
-
-/* --- ESTILOS DE ESQUINAS Y MARCOS --- */
-.framed-section {
-    position: relative;
-}
-.corner-decoration {
-    position: absolute;
-    width: 140px;
-    max-width: 25%;
-    pointer-events: none;
-    z-index: 3;
-    opacity: 0.95;
-}
-.corner-tl { top: 10px; left: 10px; }
-.corner-tr { top: 10px; right: 10px; transform: scaleX(-1); }
-.corner-bl { bottom: 10px; left: 10px; transform: scaleY(-1); }
-.corner-br { bottom: 10px; right: 10px; transform: rotate(180deg); }
-
-.card-border {
-    position: absolute;
-    top: 20px; left: 20px; right: 20px; bottom: 20px;
-    border: 1px solid var(--brown-line);
-    pointer-events: none;
-    z-index: 1;
-}
-
-.img-fluid {
-    width: 85%;
-    max-width: 450px;
-    max-height: 55vh;
-    object-fit: cover;
-    border-radius: 4px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-    border: 1px solid rgba(140, 120, 96, 0.2);
-    margin: 30px auto;
-    display: block;
-}
-.img-banner {
-    width: 100%;
-    height: 40vh;
-    object-fit: cover;
-    display: block;
-    margin: 0;
-    border-top: 1px solid var(--brown-line);
-    border-bottom: 1px solid var(--brown-line);
 }
 
 /* --- SECCIÓN HERO --- */
