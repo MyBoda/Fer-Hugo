@@ -39,7 +39,6 @@ body, html {
     left: 0;
     width: 100vw;
     height: 100vh;
-    /* Fondo con tono pergamino/marfil suave para aislar la carta */
     background: radial-gradient(circle, #f4efe6 0%, #e6dfd1 100%);
     display: flex;
     justify-content: center;
@@ -79,7 +78,6 @@ body, html {
     margin: 0 auto;
     background: linear-gradient(135deg, #5c7336 0%, #4a5e2c 100%);
     border-radius: 4px;
-    /* Sombra exterior fuerte y sombra interna (inset) para simular grosor de papel */
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), inset 0 0 25px rgba(0, 0, 0, 0.15);
     cursor: pointer;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -100,7 +98,7 @@ body, html {
     height: 0;
     border-left: 190px solid transparent;
     border-right: 190px solid transparent;
-    border-top: 130px solid #3d4e22; /* Tono más oscuro para el doblez */
+    border-top: 130px solid #3d4e22;
     filter: drop-shadow(0 4px 5px rgba(0,0,0,0.2));
 }
 
@@ -112,11 +110,8 @@ body, html {
     transform: translate(-50%, -50%);
     width: 72px;
     height: 72px;
-    /* Degradado complejo para imitar la luz sobre la cera metálica antigua */
     background: radial-gradient(circle at 35% 35%, #f9e7b2 0%, #d4af37 45%, #997517 80%, #6b500c 100%);
-    /* Bordes ligeramente asimétricos para que parezca un sello de cera real moldeado a mano */
     border-radius: 48% 52% 47% 53% / 50% 48% 52% 50%;
-    /* Múltiples sombras: relieve exterior y profundidad interior (hundido por el sello) */
     box-shadow: 
         0 6px 15px rgba(0, 0, 0, 0.4),
         inset 0 2px 3px rgba(255, 255, 255, 0.6),
@@ -153,6 +148,52 @@ body, html {
 
 .open-text:hover {
     color: #556B2F;
+}
+
+/* --- ESTILOS DE ESQUINAS Y MARCOS --- */
+.framed-section {
+    position: relative;
+}
+.corner-decoration {
+    position: absolute;
+    width: 140px;
+    max-width: 25%;
+    pointer-events: none;
+    z-index: 3;
+    opacity: 0.95;
+}
+.corner-tl { top: 10px; left: 10px; }
+.corner-tr { top: 10px; right: 10px; transform: scaleX(-1); }
+.corner-bl { bottom: 10px; left: 10px; transform: scaleY(-1); }
+.corner-br { bottom: 10px; right: 10px; transform: rotate(180deg); }
+
+.card-border {
+    position: absolute;
+    top: 20px; left: 20px; right: 20px; bottom: 20px;
+    border: 1px solid var(--brown-line);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.img-fluid {
+    width: 85%;
+    max-width: 450px;
+    max-height: 55vh;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    border: 1px solid rgba(140, 120, 96, 0.2);
+    margin: 30px auto;
+    display: block;
+}
+.img-banner {
+    width: 100%;
+    height: 40vh;
+    object-fit: cover;
+    display: block;
+    margin: 0;
+    border-top: 1px solid var(--brown-line);
+    border-bottom: 1px solid var(--brown-line);
 }
 
 /* --- SECCIÓN HERO --- */
