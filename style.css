@@ -546,3 +546,24 @@ h1 {
     .countdown-box::after { display: none; }
     .corner-decoration { width: 100px; }
 }
+/* Contenedor o fondo principal del sobre */
+#envelope-overlay {
+    background-color: #4A5D4E; /* Un tono verde olivo elegante y profundo para el fondo */
+}
+
+/* Si tienes una caja o diseño de carta/sobre específica */
+.envelope-box, .envelope-card {
+    background-color: #F4F6F0; /* Fondo interno tipo papel marfil o claro */
+    border: 2px solid #556B2F; /* Borde color verde olivo clásico */
+}
+
+/* El botón de abrir el sobre */
+#open-envelope-btn {
+    background-color: #556B2F; /* Verde olivo */
+    color: #ffffff;
+    border: none;
+}
+
+#open-envelope-btn:hover {
+    background-color: #3B4B20; /* Un tono verde olivo más oscuro al pasar el mouse */
+}
