@@ -32,7 +32,7 @@ body, html {
     transform: translateY(0);
 }
 
-/* --- SOBRE REAL CON IMAGEN Y SELLO 3D DORADO --- */
+/* --- SOBRE ROTADO 90° A LA DERECHA (HORIZONTAL) --- */
 .envelope-overlay {
     position: fixed;
     top: 0;
@@ -56,7 +56,7 @@ body, html {
 .envelope-container {
     text-align: center;
     width: 90%;
-    max-width: 400px;
+    max-width: 520px;
     padding: 20px;
 }
 
@@ -64,22 +64,22 @@ body, html {
     font-family: 'Playfair Display', serif;
     font-size: 2.4rem;
     color: #2C3529;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     font-style: italic;
     text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
-/* Cuerpo principal del sobre usando Images/Sobre.png con respaldo de color por seguridad */
+/* Dimensiones invertidas y rotación de 90° a la derecha */
 .envelope-box-css {
     position: relative;
-    width: 100%;
-    max-width: 340px;
-    height: 480px;
-    margin: 0 auto;
+    width: 460px;
+    height: 320px;
+    margin: 40px auto;
     background-color: #556B2F; 
     background-image: url('Images/Sobre.png');
     background-size: cover;
     background-position: center;
+    transform: rotate(90deg);
     border-radius: 6px;
     box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35), inset 0 0 15px rgba(0,0,0,0.2);
     cursor: pointer;
@@ -87,7 +87,7 @@ body, html {
 }
 
 .envelope-box-css:hover {
-    transform: translateY(-4px);
+    transform: rotate(90deg) scale(1.02);
     box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0,0,0,0.2);
 }
 
@@ -103,14 +103,9 @@ body, html {
     align-items: center;
     justify-content: center;
     z-index: 10;
-    transition: transform 0.3s ease;
 }
 
-.envelope-box-css:hover .wax-seal-real-container {
-    transform: translate(-50%, -50%) scale(1.06);
-}
-
-/* Filtro corregido para convertir el sello rojo en DORADO/AMARILLO BRILLANTE */
+/* Filtro para el sello dorado */
 .wax-seal-img {
     width: 100%;
     height: 100%;
@@ -118,21 +113,21 @@ body, html {
     filter: hue-rotate(48deg) saturate(3.2) brightness(1.15) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.5));
 }
 
-/* Tus iniciales grabadas sobre el sello */
+/* INICIALES CON ESTILO DE CURSIVA / CALIGRAFÍA ANTIGUA */
 .wax-seal-initials {
     position: absolute;
-    font-family: 'Playfair Display', serif;
-    font-weight: bold;
+    font-family: 'Great Vibes', cursive;
+    font-weight: 400;
     color: #3b2502;
-    font-size: 1.3rem;
-    letter-spacing: 1px;
+    font-size: 2rem;
+    letter-spacing: 2px;
     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7), 0 -1px 1px rgba(0, 0, 0, 0.8);
     pointer-events: none;
 }
 
 /* Texto inferior */
 .open-text {
-    margin-top: 25px;
+    margin-top: 45px;
     font-family: 'Montserrat', sans-serif;
     font-size: 0.9rem;
     letter-spacing: 2.5px;
@@ -146,17 +141,18 @@ body, html {
     color: #556B2F;
 }
 
-/* --- ESTILOS DE ESQUINAS Y MARCOS (OLIVO) --- */
+/* --- ESTILOS DE ESQUINAS Y OLIVO (VISIBILIDAD ASEGURADA) --- */
 .corner-decoration {
     position: absolute;
     width: 140px;
-    max-width: 25%;
+    height: auto;
     pointer-events: none;
     z-index: 3;
     opacity: 0.95;
+    display: block;
 }
-.corner-tl { top: 10px; left: 10px; }
-.corner-tr { top: 10px; right: 10px; transform: scaleX(-1); }
+.corner-tl { top: 15px; left: 15px; }
+.corner-tr { top: 15px; right: 15px; transform: scaleX(-1); }
 
 /* --- SECCIÓN HERO --- */
 .hero { 
@@ -292,14 +288,6 @@ h1 {
   margin-left: 5px; 
 }
 
-.icono-pausa {
-  width: 14px;
-  height: 18px;
-  border-left: 5px solid var(--primary-color); 
-  border-right: 5px solid var(--primary-color); 
-  box-sizing: border-box;
-}
-
 /* --- CITA Y PADRES --- */
 .quote-section {
     padding: 80px 20px 40px;
@@ -429,6 +417,10 @@ h1 {
 }
 
 @media (max-width: 600px) { 
+    .envelope-box-css {
+        width: 340px;
+        height: 240px;
+    }
     .countdown-container { gap: 15px; } 
     .countdown-box { 
         padding: 20px 5px; 
