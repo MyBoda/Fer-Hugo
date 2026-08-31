@@ -1,75 +1,64 @@
-/**
- * Script completo y optimizado para la invitación digital de boda.
- * Gestiona la transición del sobre interactivo, la reproducción de audio,
- * las animaciones de aparición gradual (fade-in) y la cuenta regresiva.
- */
 document.addEventListener('DOMContentLoaded', () => {
-    // Selección segura de elementos del DOM
+    // Referencias a los elementos del DOM
     const envelopeOverlay = document.getElementById('envelopeOverlay');
     const openEnvelopeBtn = document.getElementById('openEnvelopeBtn');
     const openTextBtn = document.getElementById('openTextBtn');
     const openEnvelopeTrigger = document.getElementById('openEnvelopeTrigger');
-    const mainContent = document.getElementById('mainContent');
     const audioBoda = document.getElementById('audioBoda');
     const reproductorAudio = document.getElementById('reproductorAudio');
     const btnReproductor = document.getElementById('btnReproductor');
+    const mainContent = document.getElementById('mainContent');
 
-    /**
-     * Función central para abrir la invitación:
-     * 1. Oculta la pantalla del sobre agregando la clase 'hidden'.
-     * 2. Muestra el contenido principal de la boda cambiando su visualización.
-     * 3. Inicia la reproducción musical gestionando las políticas de autoplay de los navegadores.
-     * 4. Activa las animaciones de entrada (fade-in).
-     */
+    // Función principal para abrir la invitación
     function abrirInvitacion() {
+        // 1. Ocultar la portada del sobre
         if (envelopeOverlay) {
             envelopeOverlay.classList.add('hidden');
         }
         
+        // 2. Mostrar el contenido principal de la boda
         if (mainContent) {
             mainContent.style.display = 'block';
-            mainContent.classList.add('visible');
         }
         
+        // 3. Intentar reproducir la música de fondo automáticamente
         if (audioBoda) {
             audioBoda.play().then(() => {
                 if (reproductorAudio) {
                     reproductorAudio.classList.add('reproduciendo');
                 }
-            }).catch(error => {
-                console.warn("La reproducción automática fue restringida por el navegador. Se requiere interacción manual desde el botón flotante.", error);
+            }).catch(e => {
+                console.log("Reproducción automática bloqueada por el navegador (requiere interacción manual)", e);
             });
         }
         
-        // Disparar las animaciones de los elementos con la clase fade-in tras la apertura
+        // 4. Activar animaciones de entrada
         setTimeout(checkFadeIn, 150);
     }
 
-    // --- ASIGNACIÓN DE EVENTOS DE APERTURA ---
-    
+    // Eventos de clic para asegurar que abra desde cualquier elemento interactivo del sobre
     if (openEnvelopeBtn) {
         openEnvelopeBtn.addEventListener('click', abrirInvitacion);
     }
-    
     if (openTextBtn) {
         openTextBtn.addEventListener('click', abrirInvitacion);
     }
-    
     if (openEnvelopeTrigger) {
         openEnvelopeTrigger.addEventListener('click', abrirInvitacion);
     }
-
-    // Permitir clic en todo el overlay del sobre para maximizar la usabilidad táctil en móviles
+    
+    // Opcional: Permitir abrir al hacer clic en todo el fondo del sobre por comodidad
     if (envelopeOverlay) {
         envelopeOverlay.addEventListener('click', (e) => {
+            // Evita conflictos si hacen clic en elementos específicos que ya tienen su propio evento
             abrirInvitacion();
         });
     }
 
-    // --- CONTROL MANUAL DEL REPRODUCTOR DE AUDIO FLOTANTE ---
+    // Control manual del reproductor de audio flotante
     if (btnReproductor && audioBoda) {
         btnReproductor.addEventListener('click', (e) => {
-            e.stopPropagation(); // Prevenir propagación de eventos hacia contenedores superiores
+            e.stopPropagation(); // Evita que se propague el evento
             if (audioBoda.paused) {
                 audioBoda.play();
                 reproductorAudio.classList.add('reproduciendo');
@@ -80,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- SISTEMA DE ANIMACIONES AL HACER SCROLL (FADE-IN) ---
+    // Función para activar los elementos con animación fade-in al hacer scroll
     function checkFadeIn() {
         const elements = document.querySelectorAll('.fade-in');
         elements.forEach(el => {
@@ -92,9 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.addEventListener('scroll', checkFadeIn);
-    checkFadeIn(); // Verificación inicial al cargar la sección principal
+    checkFadeIn();
 
-    // --- CUENTA REGRESIVA DINÁMICA ---
+    // Cuenta regresiva (ajustada a la fecha de la boda: 17 de octubre de 2026)
     const countDownDate = new Date("October 17, 2026 00:00:00").getTime();
     
     function actualizarContador() {
@@ -112,9 +101,3 @@ document.addEventListener('DOMContentLoaded', () => {
             if (m) m.innerText = "00";
             if (s) s.innerText = "00";
             return;
-        }
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000
