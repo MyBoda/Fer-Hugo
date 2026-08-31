@@ -1,103 +1,124 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Referencias a los elementos del DOM
-    const envelopeOverlay = document.getElementById('envelopeOverlay');
-    const openEnvelopeBtn = document.getElementById('openEnvelopeBtn');
-    const openTextBtn = document.getElementById('openTextBtn');
-    const openEnvelopeTrigger = document.getElementById('openEnvelopeTrigger');
-    const audioBoda = document.getElementById('audioBoda');
-    const reproductorAudio = document.getElementById('reproductorAudio');
-    const btnReproductor = document.getElementById('btnReproductor');
-    const mainContent = document.getElementById('mainContent');
-
-    // Función principal para abrir la invitación
-    function abrirInvitacion() {
-        // 1. Ocultar la portada del sobre
-        if (envelopeOverlay) {
-            envelopeOverlay.classList.add('hidden');
-        }
-        
-        // 2. Mostrar el contenido principal de la boda
-        if (mainContent) {
-            mainContent.style.display = 'block';
-        }
-        
-        // 3. Intentar reproducir la música de fondo automáticamente
-        if (audioBoda) {
-            audioBoda.play().then(() => {
-                if (reproductorAudio) {
-                    reproductorAudio.classList.add('reproduciendo');
-                }
-            }).catch(e => {
-                console.log("Reproducción automática bloqueada por el navegador (requiere interacción manual)", e);
-            });
-        }
-        
-        // 4. Activar animaciones de entrada
-        setTimeout(checkFadeIn, 150);
-    }
-
-    // Eventos de clic para asegurar que abra desde cualquier elemento interactivo del sobre
-    if (openEnvelopeBtn) {
-        openEnvelopeBtn.addEventListener('click', abrirInvitacion);
-    }
-    if (openTextBtn) {
-        openTextBtn.addEventListener('click', abrirInvitacion);
-    }
-    if (openEnvelopeTrigger) {
-        openEnvelopeTrigger.addEventListener('click', abrirInvitacion);
-    }
+document.addEventListener('DOMContentLoaded', function() {
     
-    // Opcional: Permitir abrir al hacer clic en todo el fondo del sobre por comodidad
-    if (envelopeOverlay) {
-        envelopeOverlay.addEventListener('click', (e) => {
-            // Evita conflictos si hacen clic en elementos específicos que ya tienen su propio evento
-            abrirInvitacion();
-        });
-    }
+    // 1. LÓGICA DEL CONTADOR (17 de Octubre de 2026)
+    const countDownDate = new Date("Oct 17, 2026 15:00:00").getTime();
 
-    // Control manual del reproductor de audio flotante
-    if (btnReproductor && audioBoda) {
-        btnReproductor.addEventListener('click', (e) => {
-            e.stopPropagation(); // Evita que se propague el evento
-            if (audioBoda.paused) {
-                audioBoda.play();
-                reproductorAudio.classList.add('reproduciendo');
-            } else {
-                audioBoda.pause();
-                reproductorAudio.classList.remove('reproduciendo');
-            }
-        });
-    }
-
-    // Función para activar los elementos con animación fade-in al hacer scroll
-    function checkFadeIn() {
-        const elements = document.querySelectorAll('.fade-in');
-        elements.forEach(el => {
-            const rect = el.getBoundingClientRect();
-            if (rect.top < window.innerHeight - 50) {
-                el.classList.add('visible');
-            }
-        });
-    }
-
-    window.addEventListener('scroll', checkFadeIn);
-    checkFadeIn();
-
-    // Cuenta regresiva (ajustada a la fecha de la boda: 17 de octubre de 2026)
-    const countDownDate = new Date("October 17, 2026 00:00:00").getTime();
-    
-    function actualizarContador() {
+    const x = setInterval(function() {
         const now = new Date().getTime();
         const distance = countDownDate - now;
 
-        const d = document.getElementById("days");
-        const h = document.getElementById("hours");
-        const m = document.getElementById("minutes");
-        const s = document.getElementById("seconds");
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        const daysEl = document.getElementById("days");
+        const hoursEl = document.getElementById("hours");
+        const minutesEl = document.getElementById("minutes");
+        const secondsEl = document.getElementById("seconds");
+
+        if (daysEl && hoursEl && minutesEl && secondsEl) {
+            daysEl.innerText = days.toString().padStart(2, '0');
+            hoursEl.innerText = hours.toString().padStart(2, '0');
+            minutesEl.innerText = minutes.toString().padStart(2, '0');
+            secondsEl.innerText = seconds.toString().padStart(2, '0');
+        }
 
         if (distance < 0) {
-            if (d) d.innerText = "00";
-            if (h) h.innerText = "00";
-            if (m) m.innerText = "00";
-            if (s) s.innerText = "00";
-            return;
+            clearInterval(x);
+            const container = document.querySelector(".countdown-container");
+            if (container) {
+                container.innerHTML = "<p style='font-family: Playfair Display; font-size: 2rem; color: #fff; font-weight: normal; font-style: italic;'>¡El gran día ha llegado!</p>";
+            }
+            const title = document.querySelector(".countdown-title");
+            if (title) title.style.display = "none";
+        }
+    }, 1000);
+
+    // 2. LÓGICA DEL SOBRE Y REPRODUCTOR DE MÚSICA (IDs exactos del HTML)
+    const audioBoda = document.getElementById('audioBoda');
+    const btnReproductor = document.getElementById('btnReproductor');
+    const iconoControl = document.getElementById('iconoControl');
+    const reproductorAudio = document.getElementById('reproductorAudio');
+    const envelopeOverlay = document.getElementById('envelopeOverlay');
+    const openEnvelopeBtn = document.getElementById('openEnvelopeBtn');
+    const mainContent = document.getElementById('mainContent');
+
+    function abrirInvitacion() {
+        if (envelopeOverlay) {
+            envelopeOverlay.classList.add('hidden');
+            setTimeout(() => {
+                envelopeOverlay.style.display = 'none';
+            }, 800);
+        }
+        
+        if (mainContent) {
+            mainContent.style.display = 'block';
+        }
+
+        if (audioBoda) {
+            audioBoda.play().then(() => {
+                if (iconoControl) iconoControl.className = 'icono-pausa';
+                if (reproductorAudio) reproductorAudio.classList.add('reproduciendo');
+            }).catch(error => {
+                console.log("Reproducción automática bloqueada por el navegador:", error);
+            });
+        }
+
+        // Activar animaciones iniciales
+        setTimeout(() => {
+            document.querySelectorAll('.hero-content.fade-in').forEach(el => {
+                el.classList.add('visible');
+            });
+        }, 150);
+    }
+
+    // Eventos para abrir el sobre (botón o texto inferior)
+    if (openEnvelopeBtn) {
+        openEnvelopeBtn.addEventListener('click', abrirInvitacion);
+    }
+    if (envelopeOverlay) {
+        const openText = envelopeOverlay.querySelector('.open-text');
+        if (openText) {
+            openText.addEventListener('click', abrirInvitacion);
+        }
+    }
+
+    // Control del botón de reproducción manual
+    if (btnReproductor && audioBoda) {
+        btnReproductor.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (audioBoda.paused) {
+                audioBoda.play();
+                if (iconoControl) iconoControl.className = 'icono-pausa';
+                if (reproductorAudio) reproductorAudio.classList.add('reproduciendo'); 
+            } else {
+                audioBoda.pause();
+                if (iconoControl) iconoControl.className = 'icono-play';
+                if (reproductorAudio) reproductorAudio.classList.remove('reproduciendo'); 
+            }
+        });
+    }
+
+    // 3. LÓGICA DE ANIMACIÓN AL HACER SCROLL (Fade-in)
+    const faders = document.querySelectorAll('.fade-in');
+    if (faders.length > 0) {
+        const appearOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+    }
+});
