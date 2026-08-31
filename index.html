@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fernanda & Hugo - ¡Nos Casamos!</title>
+    <!-- Importando fuentes -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap');
+    </style>
+    <!-- Enlazando los estilos separados -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- SOBRE DE BIENVENIDA (ESTILO VERDE OLIVO Y DORADO) -->
+    <div id="envelope-overlay" class="envelope-overlay">
+        <div class="envelope-container">
+            <h2 class="envelope-title">Nuestra Boda</h2>
+            
+            <!-- Contenedor principal del sobre en CSS puro -->
+            <div id="open-envelope-btn" class="envelope-box-css">
+                <div class="envelope-flap-top"></div>
+                <div class="wax-seal">
+                    <span>FH</span>
+                </div>
+            </div>
+
+            <p class="open-text" onclick="document.getElementById('open-envelope-btn').click();">
+                HAZ CLICK PARA ABRIR
+            </p>
+        </div>
+    </div>
+
+    <!-- SECCIÓN PRINCIPAL (HERO) -->
+    <div class="hero framed-section" id="inicio">
+        <div class="card-border"></div>
+        <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-tl">
+        <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-tr">
+        <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-bl">
+        <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-br">
+
+        <div class="hero-content fade-in">
+            <p class="pre-title">Tenemos el honor de invitarte a</p>
+            <p class="pre-title" style="margin-top:-10px;">Nuestra Boda</p>
+            <h1>Fernanda</h1>
+            <span class="ampersand">&</span>
+            <h1>Hugo</h1>
+            <div class="wedding-date-hero">02 . ENERO . 2027</div>
+
+            <!-- REPRODUCTOR DE MÚSICA -->
+            <div class="contenedor-reproductor">
+              <div class="reproductor-audio" id="contenedor-reproductor-audio">
+                <div class="ondas">
+                    <span class="barra h-1"></span><span class="barra h-3"></span><span class="barra h-5"></span><span class="barra h-2"></span><span class="barra h-4"></span><span class="barra h-2"></span><span class="barra h-5"></span><span class="barra h-3"></span><span class="barra h-1"></span>
+                </div>
+                
+                <button id="btn-play-pause" class="btn-reproductor">
+                  <div id="icono-reproductor" class="icono-play"></div>
+                </button>
+
+                <div class="ondas">
+                    <span class="barra h-1"></span><span class="barra h-3"></span><span class="barra h-5"></span><span class="barra h-2"></span><span class="barra h-4"></span><span class="barra h-2"></span><span class="barra h-5"></span><span class="barra h-3"></span><span class="barra h-1"></span>
+                </div>
+              </div>
+              <audio id="musica-fondo" loop>
+                <source src="Music/musica.mp3" type="audio/mp3">
+                Tu navegador no soporta el elemento de audio.
+              </audio>
+            </div>
+        </div>
+    </div>
+    
+    <!-- SECCIÓN CITA, PADRES Y PADRINOS -->
+    <div class="section-light">
+        <div class="quote-section fade-in">
+            <p class="quote-text">"Dios juntó nuestras manos y nos señaló el camino, nosotros uniremos nuestras vidas y la recorreremos con amor y fe"</p>
+            
+            <img src="Images/Fer&Hugo_StD_2026_017.jpg" alt="Manos unidas" class="img-fluid fade-in">
+
+            <div class="floral-divider" style="margin-top: 40px;">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.5,3.5C15.5,3.5 13.8,4.8 13.2,6.6C11.9,6 10.4,6.2 9.3,7.3C7.9,8.7 7.7,11 9,12.5C7.9,13.2 7.2,14.5 7.4,15.9C7.7,18.1 9.6,19.7 11.8,19.7C13.5,19.7 15,18.7 15.8,17.2C17.3,17.5 18.9,16.8 19.8,15.5C20.8,14.1 20.7,12.2 19.7,10.9C20.3,9.4 19.9,7.6 18.6,6.5C18.3,6.1 17.9,5.8 17.5,5.5V3.5Z"/>
+                </svg>
+            </div>
+
+            <span class="section-subtitle">Motivados por el amor que nos tenemos y con la bendición de nuestros padres</span>
+            <div class="parents-grid">
+                <div class="parents-block">
+                    <p>Fernando Velez Cuata</p>
+                    <p>Julia Flores Serrano</p>
+                </div>
+                <div class="parents-block">
+                    <p>Eleazar Hernández Guzmán</p>
+                    <p>Elia Florentina Gómez Ramos</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 50px;">
+                <span class="section-subtitle">Padrinos de Velación</span>
+                <p class="detail-text" style="color: var(--text-dark);">Julián Guadalupe Gómez Ramos</p>
+                <p class="detail-text" style="color: var(--text-dark);">Irma López Martínez</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN CONTADOR -->
+    <div class="countdown-section fade-in">
+        <h3 class="countdown-title">Faltan</h3>
+        <div class="countdown-container">
+            <div class="countdown-box"><span id="days">00</span><span class="label">Días</span></div>
+            <div class="countdown-box"><span id="hours">00</span><span class="label">Horas</span></div>
+            <div class="countdown-box"><span id="minutes">00</span><span class="label">Minutos</span></div>
+            <div class="countdown-box"><span id="seconds">00</span><span class="label">Segundos</span></div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN DE DETALLES -->
+    <div class="section section-light fade-in" id="detalles">
+        <h2 class="section-title">Cuándo & Dónde</h2>
+        <span class="section-subtitle">Acompáñanos en nuestro gran día</span>
+        
+        <div class="floral-divider">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.5,3.5C15.5,3.5 13.8,4.8 13.2,6.6C11.9,6 10.4,6.2 9.3,7.3C7.9,8.7 7.7,11 9,12.5C7.9,13.2 7.2,14.5 7.4,15.9C7.7,18.1 9.6,19.7 11.8,19.7C13.5,19.7 15,18.7 15.8,17.2C17.3,17.5 18.9,16.8 19.8,15.5C20.8,14.1 20.7,12.2 19.7,10.9C20.3,9.4 19.9,7.6 18.6,6.5C18.3,6.1 17.9,5.8 17.5,5.5V3.5Z"/>
+            </svg>
+        </div>
+
+        <!-- IGLESIA -->
+        <div class="detail-block framed-section">
+            <div class="card-border"></div>
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-tl">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-tr">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-bl">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-br">
+
+            <span class="detail-icon">
+                <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2v5" /><path d="M10 4h4" /><path d="M8 12L12 7l4 5v10H8V12z" /><path d="M8 11L4 14v8h4" /><path d="M16 11l4 3v8h-4" /><path d="M10 22v-3a2 2 0 0 1 4 0v3" /><circle cx="12" cy="13" r="1.5" />
+                </svg>
+            </span>
+            <p class="detail-text"><strong>Ceremonia Religiosa</strong></p>
+            <p class="detail-text">Santuario del Señor de la Misericordia</p>
+            <p class="detail-text">15:00 hrs.</p>
+            <a href="https://maps.app.goo.gl/RyyEuV9XRZdZKXv38" target="_blank" class="btn">Ver Mapa</a>
+        </div>
+
+        <!-- RECEPCIÓN -->
+        <div class="detail-block framed-section">
+            <div class="card-border"></div>
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-tl">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-tr">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-bl">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-br">
+
+            <span class="detail-icon">
+                <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2v2" /><path d="M10 4l-1 1" /><path d="M14 4l1 1" />
+                    <g transform="translate(1, 2) rotate(15, 9, 12)"><path d="M6 4h6l-1 7c0 1.5-1 3-2 3s-2-1.5-2-3L6 4z" /><path d="M9 14v7" /><path d="M7 21h4" /><path d="M6.3 7h5.4" /></g>
+                    <g transform="translate(-1, 2) rotate(-15, 15, 12)"><path d="M12 4h6l-1 7c0 1.5-1 3-2 3s-2-1.5-2-3L12 4z" /><path d="M15 14v7" /><path d="M13 21h4" /><path d="M12.3 7h5.4" /></g>
+                </svg>
+            </span>
+            <p class="detail-text"><strong>Recepción</strong></p>
+            <p class="detail-text">Hotel Posada Señorial</p>
+            <p class="detail-text">17:00 hrs.</p>
+            <a href="https://share.google/oNMljRJuNwNq5EygN" target="_blank" class="btn">Ver Mapa</a>
+        </div>
+    </div>
+
+    <!-- BANNER DE TRANSICIÓN CON FOTO -->
+    <img src="Images/Fer&Hugo_StD_2026_043.jpg" alt="Fernanda y Hugo" class="img-banner fade-in">
+
+    <!-- SECCIÓN DE REGALOS -->
+    <div class="section fade-in">
+        <h2 class="section-title">Mesa de Regalos</h2>
+        
+        <div class="floral-divider">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.5,3.5C15.5,3.5 13.8,4.8 13.2,6.6C11.9,6 10.4,6.2 9.3,7.3C7.9,8.7 7.7,11 9,12.5C7.9,13.2 7.2,14.5 7.4,15.9C7.7,18.1 9.6,19.7 11.8,19.7C13.5,19.7 15,18.7 15.8,17.2C17.3,17.5 18.9,16.8 19.8,15.5C20.8,14.1 20.7,12.2 19.7,10.9C20.3,9.4 19.9,7.6 18.6,6.5C18.3,6.1 17.9,5.8 17.5,5.5V3.5Z"/>
+            </svg>
+        </div>
+
+        <img src="Images/Fer&Hugo_StD_2026_014.jpg" alt="Detalle del anillo" class="img-fluid fade-in">
+        
+        <div class="gift-box framed-section">
+            <div class="card-border"></div>
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-tl">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-tr">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-bl">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-br">
+
+            <p class="detail-text" style="max-width: 600px; margin: 0 auto 30px auto;">
+                Su presencia es nuestro mayor regalo, pero si desean tener un detalle con nosotros, pueden encontrar nuestra mesa de regalos en:
+            </p>
+            <h3 style="font-family: 'Playfair Display', serif; color: var(--primary-color); font-size: 1.8rem; margin: 10px 0;">Liverpool</h3>
+            <p class="detail-text" style="font-size: 1.3rem; letter-spacing: 2px;">No. de Evento: <strong>52028584</strong></p>
+            <a href="https://mesaderegalos.liverpool.com.mx/milistaderegalos/52028584" target="_blank" class="btn">Ver Mesa de Regalos</a>
+        </div>
+    </div>
+
+    <!-- SECCIÓN DE RSVP -->
+    <div class="section section-light fade-in">
+        <h2 class="section-title">Asistencia</h2>
+        <span class="section-subtitle">RSVP</span>
+        
+        <div class="floral-divider">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.5,3.5C15.5,3.5 13.8,4.8 13.2,6.6C11.9,6 10.4,6.2 9.3,7.3C7.9,8.7 7.7,11 9,12.5C7.9,13.2 7.2,14.5 7.4,15.9C7.7,18.1 9.6,19.7 11.8,19.7C13.5,19.7 15,18.7 15.8,17.2C17.3,17.5 18.9,16.8 19.8,15.5C20.8,14.1 20.7,12.2 19.7,10.9C20.3,9.4 19.9,7.6 18.6,6.5C18.3,6.1 17.9,5.8 17.5,5.5V3.5Z"/>
+            </svg>
+        </div>
+
+        <p class="detail-text" style="max-width: 500px; margin: 0 auto 30px auto;">Nos haría muy felices compartir este momento contigo. Por favor, confirma tu asistencia antes del 1 de Noviembre.</p>
+        
+        <a href="https://wa.me/+5212212107490" target="_blank" class="btn btn-solid">Confirmar Asistencia</a>
+    </div>
+
+    <!-- SECCIÓN: COMPARTIR FOTOS -->
+    <div class="section fade-in" id="compartir-fotos">
+        <h2 class="section-title">Comparte tus Fotos</h2>
+        <span class="section-subtitle">Momentos inolvidables</span>
+        
+        <div class="floral-divider">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.5,3.5C15.5,3.5 13.8,4.8 13.2,6.6C11.9,6 10.4,6.2 9.3,7.3C7.9,8.7 7.7,11 9,12.5C7.9,13.2 7.2,14.5 7.4,15.9C7.7,18.1 9.6,19.7 11.8,19.7C13.5,19.7 15,18.7 15.8,17.2C17.3,17.5 18.9,16.8 19.8,15.5C20.8,14.1 20.7,12.2 19.7,10.9C20.3,9.4 19.9,7.6 18.6,6.5C18.3,6.1 17.9,5.8 17.5,5.5V3.5Z"/>
+            </svg>
+        </div>
+
+        <div class="gift-box framed-section" style="max-width: 650px; margin: 0 auto;">
+            <div class="card-border"></div>
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-tl">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-tr">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-bl">
+            <img src="Images/esquina-botanica.png" alt="" class="corner-decoration corner-br">
+
+            <p class="detail-text" style="margin-bottom: 25px;">
+                ¿Tomaste fotos o videos durante la celebración? Súbelos aquí para que podamos conservar cada instante de nuestra boda en nuestra nube.
+            </p>
+
+            <form id="upload-form" style="display: flex; flex-direction: column; gap: 15px; align-items: center;">
+                <input type="file" id="photo-file" accept="image/*,video/*" required style="font-family: 'Montserrat', sans-serif; font-size: 0.9rem; color: var(--text-dark); padding: 12px; border: 1px dashed var(--brown-line); border-radius: 4px; width: 100%; max-width: 450px; background: rgba(250,248,245,0.6); cursor: pointer;">
+                
+                <button type="submit" class="btn btn-solid" id="btn-subir" style="margin-top: 10px;">Subir Recuerdo</button>
+                <p id="upload-status" style="font-size: 0.95rem; color: var(--primary-color); margin-top: 15px; display: none; font-weight: 600;"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- PIE DE PÁGINA -->
+    <div class="footer">
+        <p class="footer-names">Fernanda & Hugo</p>
+        <p>¡Esperamos verte ahí!</p>
+        <p style="margin-top: 20px; font-size: 0.7rem; opacity: 0.6;">02.01.2027 | PUEBLA</p>
+    </div>
+
+    <!-- Enlazando los scripts separados -->
+    <script src="mail.js"></script>
+</body>
+</html>
