@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, 1000);
 
-    // 2. LÓGICA DEL SOBRE Y REPRODUCTOR DE MÚSICA (IDs exactos del HTML)
+    // 2. LÓGICA DEL SOBRE Y REPRODUCTOR DE MÚSICA
     const audioBoda = document.getElementById('audioBoda');
     const btnReproductor = document.getElementById('btnReproductor');
     const iconoControl = document.getElementById('iconoControl');
@@ -65,15 +65,19 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        // Activar animaciones iniciales
+        // CORRECCIÓN VISUAL: Asegurar que los elementos visibles al abrir se muestren de inmediato
         setTimeout(() => {
-            document.querySelectorAll('.hero-content.fade-in').forEach(el => {
-                el.classList.add('visible');
+            document.querySelectorAll('.fade-in').forEach(el => {
+                // Si el elemento está en la parte superior, lo mostramos de inmediato
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight) {
+                    el.classList.add('visible');
+                }
             });
-        }, 150);
+        }, 100);
     }
 
-    // Eventos para abrir el sobre (botón o texto inferior)
+    // Eventos para abrir el sobre
     if (openEnvelopeBtn) {
         openEnvelopeBtn.addEventListener('click', abrirInvitacion);
     }
@@ -100,12 +104,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // 3. LÓGICA DE ANIMACIÓN AL HACER SCROLL (Fade-in)
+    // 3. ANIMACIONES AL HACER SCROLL (Fade-in seguro)
     const faders = document.querySelectorAll('.fade-in');
     if (faders.length > 0) {
         const appearOptions = {
-            threshold: 0.15,
-            rootMargin: "0px 0px -50px 0px"
+            threshold: 0.1,
+            rootMargin: "0px 0px -30px 0px"
         };
 
         const appearOnScroll = new IntersectionObserver(function(entries, observer) {
