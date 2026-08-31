@@ -69,14 +69,15 @@ body, html {
     text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
-/* Cuerpo principal del sobre usando tu imagen de fondo vertical */
+/* Cuerpo principal del sobre usando Images/Sobre.png con respaldo de color por seguridad */
 .envelope-box-css {
     position: relative;
     width: 100%;
     max-width: 340px;
     height: 480px;
     margin: 0 auto;
-    background-image: url('Images/sobreverdeolivo.jpg');
+    background-color: #556B2F; 
+    background-image: url('Images/Sobre.png');
     background-size: cover;
     background-position: center;
     border-radius: 6px;
@@ -109,12 +110,12 @@ body, html {
     transform: translate(-50%, -50%) scale(1.06);
 }
 
-/* Imagen del sello con filtro profesional para transformarlo a color DORADO/AMARILLO */
+/* Filtro corregido para convertir el sello rojo en DORADO/AMARILLO BRILLANTE */
 .wax-seal-img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    filter: hue-rotate(35deg) saturate(2.4) brightness(1.15) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.5));
+    filter: hue-rotate(48deg) saturate(3.2) brightness(1.15) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.5));
 }
 
 /* Tus iniciales grabadas sobre el sello */
@@ -145,7 +146,7 @@ body, html {
     color: #556B2F;
 }
 
-/* --- ESTILOS DE ESQUINAS Y MARCOS --- */
+/* --- ESTILOS DE ESQUINAS Y MARCOS (OLIVO) --- */
 .corner-decoration {
     position: absolute;
     width: 140px;
@@ -405,7 +406,7 @@ h1 {
     font-size: clamp(0.7rem, 2.5vw, 0.85rem); 
     text-transform: uppercase; 
     letter-spacing: 3px; 
-    font-weight: 300;
+    font-weight: 350;
     color: rgba(255,255,255,0.8);
 }
 
