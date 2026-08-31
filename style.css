@@ -102,36 +102,41 @@ body, html {
     z-index: 5;
 }
 
-/* Sello de lacre antiguo (Efecto 3D y bordes orgánicos) */
+/* Sello de lacre estilo antiguo (Efecto cera orgánica 3D en tonos dorados) */
 .wax-seal {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 72px;
-    height: 72px;
-    background: radial-gradient(circle at 35% 35%, #f9e7b2 0%, #d4af37 45%, #997517 80%, #6b500c 100%);
-    border-radius: 48% 52% 47% 53% / 50% 48% 52% 50%;
+    width: 82px;
+    height: 82px;
+    /* Gradiente radial enriquecido para simular brillo de cera metálica/dorada */
+    background: radial-gradient(circle at 30% 30%, #fde088 0%, #d49e23 45%, #96660f 75%, #593c04 100%);
+    /* Bordes irregulares y orgánicos simulando cera derretida moldeada a mano */
+    border-radius: 42% 58% 47% 53% / 52% 43% 57% 48%;
     box-shadow: 
-        0 6px 15px rgba(0, 0, 0, 0.4),
-        inset 0 2px 3px rgba(255, 255, 255, 0.6),
-        inset 0 -3px 4px rgba(0, 0, 0, 0.4);
-    border: 2px solid #5a4208;
+        0 10px 22px rgba(0, 0, 0, 0.45), /* Sombra exterior profunda */
+        inset 0 3px 6px rgba(255, 255, 255, 0.65), /* Brillo superior de la cera */
+        inset 0 -5px 10px rgba(50, 25, 2, 0.7), /* Sombra interior inferior */
+        inset 2px 0 5px rgba(255, 255, 255, 0.3), /* Reflejo lateral */
+        inset -2px 0 5px rgba(40, 20, 1, 0.5);
+    border: 2px solid #5a3d06;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Playfair Display', serif;
     font-weight: bold;
-    color: #3b2b04;
-    font-size: 1.2rem;
+    color: #3b2502;
+    font-size: 1.3rem;
     letter-spacing: 1px;
     z-index: 10;
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.4);
+    /* Efecto de grabado en bajorrelieve para las letras */
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5), 0 -1px 1px rgba(0, 0, 0, 0.8);
     transition: transform 0.3s ease;
 }
 
 .envelope-box-css:hover .wax-seal {
-    transform: translate(-50%, -50%) scale(1.05);
+    transform: translate(-50%, -50%) scale(1.06);
 }
 
 /* Texto inferior */
